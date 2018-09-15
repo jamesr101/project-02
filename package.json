@@ -1,5 +1,5 @@
 {
-  "name": "WDI Project 2",
+  "name": "wdi-project-2",
   "version": "1.0.0",
   "description": "An Express CRUD App",
   "main": "index.js",
@@ -10,6 +10,10 @@
     "start:dev": "nodemon"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.14.0",
+    "express-ejs-layouts": "^2.5.0",
+    "mongoose": "^5.2.14"
   }
 }

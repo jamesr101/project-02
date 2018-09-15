@@ -1,0 +1,42 @@
+<h1>New Article Page</h1>
+
+<form class="" action="/articles" method="post">
+
+  <div class="">
+    <label for="title"></label>
+    <input type="text" id="title" name="title" value="<%= article.title %>">
+  </div>
+
+  <div class="">
+    <label for="subtitle"></label>
+    <input type="text" id="subtitle" name="subtitle" value="<%= article.subtitle %>">
+  </div>
+
+  <div class="">
+    <label for="image"></label>
+    <input type="text" id="image" name="image" value="<%= article.image %>">
+  </div>
+
+  <div class="">
+    <label for="text"></label>
+    <input type="text" id="text" name="text" value="<%= article.text %>">
+  </div>
+
+  <div class="">
+    <label for="author"></label>
+    <input type="text" id="author" name="author" value="<%= article.author %>">
+  </div>
+
+  <div class="">
+    <label for="blockQuote"></label>
+    <input type="text" id="blockQuote" name="blockQuote" value="<%= article.blockQuote %>">
+  </div>
+
+  <div class="">
+    <label for="readingTime"></label>
+    <input type="text" id="readingTime" name="readingTime" value="<%= article.readingTime %>">
+  </div>
+
+  <button name="button">Submit</button>
+
+</form>
