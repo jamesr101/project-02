@@ -4,6 +4,7 @@ const app = express();
 const routes = require('./config/routes');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const {dbURI, port } = require('./config/environment');
 
@@ -13,6 +14,13 @@ app.use(ejsLayouts);
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride(req => {
+  if(req.body && typeof req.body === 'object' && '_method' in req.body) {
+    const method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 
 app.use(express.static(`${__dirname}/public`));
 
