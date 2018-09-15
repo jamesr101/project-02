@@ -16,4 +16,6 @@ router.get('/articles/:id/edit', articlesController.edit);
 
 router.put('/articles/:id', articlesController.update);
 
+router.delete('/articles/:id', articlesController.delete);
+
 module.exports = router;

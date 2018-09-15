@@ -11,4 +11,10 @@
 
     <a href="/articles/<%= article._id %>/edit">Edit article</a>
 
+    <form class="" action="/articles/<%= article._id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <button name="button">Remove article</button>
+    </form>
+
+
   </div>

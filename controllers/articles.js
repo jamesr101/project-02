@@ -33,10 +33,8 @@ function editRoute(req, res) {
 }
 
 function updateRoute(req, res) {
-  console.log(req.params.id);
   Article.findById(req.params.id, (err, article) => {
     article.set(req.body);
-    console.log(req.params.id);
     article.save(() => {
       res.redirect(`/articles/${req.params.id}`);
     });
@@ -44,15 +42,14 @@ function updateRoute(req, res) {
   });
 }
 
+function deleteRoute(req, res) {
+  Article.findById(req.params.id, (err, article) => {
+    article.remove(() => {
+      res.redirect('/articles');
+    });
 
-// function updateRoute(req, res) {
-//   Cocktail.findById(req.params.id, (err, cocktail) => {
-//     cocktail.set(req.body);
-//     cocktail.save(() => {
-//       res.redirect(`/cocktails/${req.params.id}`);
-//     });
-//   });
-// }
+  });
+}
 
 module.exports = {
   index: indexRoute,
@@ -60,5 +57,6 @@ module.exports = {
   new: newRoute,
   create: createRoute,
   edit: editRoute,
-  update: updateRoute
+  update: updateRoute,
+  delete: deleteRoute
 };
