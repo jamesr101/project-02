@@ -11,6 +11,7 @@ function indexRoute(req, res) {
 
 function showRoute(req, res) {
   Article.findById(req.params.id)
+    .populate('user comments.user')
     .exec((err, article) => {
       res.render('articles/show', { article });
     });
