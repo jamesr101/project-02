@@ -22,6 +22,7 @@ function newRoute(req, res) {
 }
 
 function createRoute(req, res) {
+  req.body.user = req.currentUser;
   Article.create(req.body, () => {
     res.redirect('/articles');
   });
