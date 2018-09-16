@@ -5,6 +5,7 @@ const routes = require('./config/routes');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const session = require('express-session');
 
 const {dbURI, port } = require('./config/environment');
 
@@ -20,6 +21,12 @@ app.use(methodOverride(req => {
     delete req.body._method;
     return method;
   }
+}));
+
+app.use(session({
+  secret: 'shhh',
+  resave: false,
+  saveUninitialized: false
 }));
 
 app.use(express.static(`${__dirname}/public`));

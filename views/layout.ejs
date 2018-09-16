@@ -8,7 +8,15 @@
     <nav>
       <a href="/">Home</a>
       <a href="/articles">Articles</a>
-      <a href="/articles/new">Add Article</a>
+
+      <% if (locals.isAuthenticated) { %>
+        <a href="/logout">Log out</a>
+        <a href="/articles/new">Add a cocktail</a>
+      <% } else { %>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      <% } %>
+
     </nav>
     <h1>LAYOUT PAGE</h1>
     <%- body %>
