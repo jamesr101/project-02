@@ -26,6 +26,7 @@ router.post('/register', registrationsController.create );
 
 router.get('/login', sessionsController.new);
 router.post('/login', sessionsController.create);
+router.get('/logout', sessionsController.delete);
 
 
 module.exports = router;

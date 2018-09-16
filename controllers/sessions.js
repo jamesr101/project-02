@@ -19,15 +19,15 @@ function createRoute(req, res) {
     res.redirect('/articles');
   });
 }
-//
-// function deleteRoute(req, res) {
-//
-//
-//   req.session.regenerate(() => res.redirect('/'));
-// }
+
+function deleteRoute(req, res) {
+
+
+  req.session.regenerate(() => res.redirect('/'));
+}
 
 module.exports = {
   new: newRoute,
-  create: createRoute
-  // delete: deleteRoute
+  create: createRoute,
+  delete: deleteRoute
 };

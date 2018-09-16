@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const auth = require('./lib/auth');
 
 const {dbURI, port } = require('./config/environment');
 
@@ -28,8 +29,10 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+app.use(auth);
 
 app.use(express.static(`${__dirname}/public`));
+
 
 // app.get('/', (req, res) => res.send('<h1>Hello world!</h1>'));
 
