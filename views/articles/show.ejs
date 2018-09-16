@@ -9,6 +9,8 @@
     <p><%= article.readingTime %> min read</p>
     <p><%= article.text %> THE END</p>
 
+    <p><%= article.published %></p>
+
     <div class="comments">
       <% article.comments.forEach( comment => {%>
         <p><%= comment.user.name %></p>

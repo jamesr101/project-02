@@ -1,3 +1,19 @@
 <h1>User profile Page</h1>
 
  <p><%= user.name %></p>
+
+
+ <% locals.articles.forEach(article => { %>
+
+   <% if (locals.currentUser._id.equals(article.user._id)){ %>
+     <div class="">
+       <a href="/articles/<%= article._id %>">
+         <img src="<%= article.image %>" alt="">
+         <h4><%= article.title %></h4>
+         <h5>Written by <%= 'default author'  %></h5>
+         <h5><%= article.subtitle %></h5>
+         <p><%= article.readingTime %> min read</p>
+       </a>
+     </div>
+   <% } %>
+ <% }) %>

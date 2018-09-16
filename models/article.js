@@ -16,7 +16,8 @@ const articleSchema = new mongoose.Schema({
   readingTime: {type: Number, required: true},
   // comments:
   comments: [ commentSchema ],
-  user: { type: mongoose.Schema.ObjectId, ref: 'User'}
+  user: { type: mongoose.Schema.ObjectId, ref: 'User'},
+  published: {type: Boolean}
 });
 
 

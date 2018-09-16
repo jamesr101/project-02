@@ -30,12 +30,12 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-app.use(auth);
 
 app.use(express.static(`${__dirname}/public`));
 
 
 app.use(flash());
+app.use(auth);
 
 app.use(routes);
 

@@ -28,6 +28,7 @@ function showRoute(req, res) {
     });
 }
 
+
 function deleteRoute(req, res) {
 
   req.session.regenerate(() => res.redirect('/'));
