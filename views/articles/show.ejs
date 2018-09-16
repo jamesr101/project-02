@@ -9,12 +9,27 @@
     <p><%= article.readingTime %> min read</p>
     <p><%= article.text %> THE END</p>
 
-    <a href="/articles/<%= article._id %>/edit">Edit article</a>
+    <div class="comments">
+      <% article.comments.forEach( comment => {%>
+        <p><%= comment.user.username %></p>
+        <p><%= comment.content %></p>
+      <% }); %>
+    </div>
 
-    <form class="" action="/articles/<%= article._id %>" method="post">
-      <input type="hidden" name="_method" value="DELETE">
-      <button name="button">Remove article</button>
-    </form>
+    <% if (locals.isAuthenticated) { %>
+      <form class="" action="/articles/<%= article._id %>/comments" method="post">
+      <label class="comment">Comment</label>
+        <input class="text" id="comment" name="content" placeholder="Comment (max 280 characters)"/>
+        <button>Submit comment</button>
+      </form>
+    <% } %>
 
+    <% if (locals.isAuthenticated) { %>
+      <a href="/articles/<%= article._id %>/edit">Edit article</a>
+      <form class="" action="/articles/<%= article._id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button name="button">Remove article</button>
+      </form>
+    <% } %>
 
   </div>

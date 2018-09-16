@@ -51,6 +51,17 @@ function deleteRoute(req, res) {
   });
 }
 
+function createCommentRoute(req, res) {
+  req.body.user = req.currentUser;
+
+  Article.findById(req.params.id, (err, article) => {
+    article.comments.push(req.body);
+    article.save(() => {
+      res.redirect(`/articles/${req.params.id}`);
+    });
+  });
+}
+
 module.exports = {
   index: indexRoute,
   show: showRoute,
@@ -58,5 +69,6 @@ module.exports = {
   create: createRoute,
   edit: editRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  createComment: createCommentRoute
 };
