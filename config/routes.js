@@ -31,5 +31,7 @@ router.get('/logout', sessionsController.delete);
 
 router.post('/articles/:id/comments', secureRoute, articlesController.createComment);
 
+router.get('/user/:id', secureRoute, sessionsController.show);
+
 
 module.exports = router;

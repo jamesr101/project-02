@@ -12,7 +12,6 @@ const articleSchema = new mongoose.Schema({
   subtitle: { type: String, required: true },
   image: { type: String, pattern: /^https?:\/\/.+/ },
   text: { type: String},
-  author: { type: String, required: true},
   blockQuote: { type: String},
   readingTime: {type: Number, required: true},
   // comments:

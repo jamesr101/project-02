@@ -20,8 +20,15 @@ function createRoute(req, res) {
   });
 }
 
-function deleteRoute(req, res) {
+function showRoute(req, res) {
+  User.findById(req.params.id)
+    .populate('user')
+    .exec((err, user) => {
+      res.render('registrations/show', { user });
+    });
+}
 
+function deleteRoute(req, res) {
 
   req.session.regenerate(() => res.redirect('/'));
 }
@@ -29,5 +36,6 @@ function deleteRoute(req, res) {
 module.exports = {
   new: newRoute,
   create: createRoute,
+  show: showRoute,
   delete: deleteRoute
 };

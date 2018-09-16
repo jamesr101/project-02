@@ -10,6 +10,8 @@
       <a href="/articles">Articles</a>
 
       <% if (locals.isAuthenticated) { %>
+
+        <a href="/user/<%= locals.currentUser._id %>">My account</a>
         <a href="/logout">Log out</a>
         <a href="/articles/new">Add an article</a>
       <% } else { %>
