@@ -5,7 +5,7 @@
  <p>Email: <%= user.email %></p>
  <p>Admin: <%= user.admin %></p>
 
- <% if (locals.isAuthenticated && locals.currentUser._id.equals(user._id)) { %>
+ <% if (locals.isAuthenticated && (locals.currentUser._id.equals(user._id) || locals.currentUser.admin)) { %>
 
    <a href="/users/<%= user._id %>/edit">Edit account</a>
    <form class="" action="/users/<%= user._id %>" method="post">

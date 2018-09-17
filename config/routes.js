@@ -3,6 +3,7 @@ const articlesController = require('../controllers/articles');
 const registrationsController = require('../controllers/registrations');
 const sessionsController = require('../controllers/sessions');
 const secureRoute = require('../lib/secureRoute');
+const adminRoute = require('../lib/adminRoute');
 
 router.get('/', (req, res) => res.render('home'));
 
@@ -32,7 +33,7 @@ router.get('/logout', sessionsController.delete);
 router.post('/articles/:id/comments', secureRoute, articlesController.createComment);
 router.delete('/articles/:id/comments/:commentId', secureRoute, articlesController.deleteComment);
 
-router.get('/users/', secureRoute, registrationsController.index);
+router.get('/users/', secureRoute, adminRoute, registrationsController.index);
 router.get('/users/:id', secureRoute, registrationsController.show);
 
 router.get('/users/:id/edit', secureRoute, registrationsController.edit);
