@@ -1,4 +1,4 @@
-const Article = require('../models/user');
+const User = require('../models/user');
 
 
 
@@ -21,42 +21,51 @@ function newRoute(req, res) {
 }
 
 function createRoute(req, res) {
-  Article.create(req.body, () => {
+  User.create(req.body, () => {
     res.redirect('/articles');
   });
 }
 
-// function editRoute(req, res) {
-//   Article.findById(req.params.id, (err, article) => {
-//     res.render('articles/edit', { article });
-//   });
-// }
+function editRoute(req, res) {
+  User.findById(req.params.id, (err, user) => {
+    res.render('registrations/edit', { user });
+  });
+}
 
-// function updateRoute(req, res) {
-//   Article.findById(req.params.id, (err, article) => {
-//     article.set(req.body);
-//     article.save(() => {
-//       res.redirect(`/articles/${req.params.id}`);
-//     });
-//
-//   });
-// }
+function updateRoute(req, res) {
+  User.findById(req.params.id, (err, user) => {
+    user.set(req.body);
+    user.save(() => {
+      res.redirect(`/user/${req.params.id}`);
+    });
 
-// function deleteRoute(req, res) {
-//   Article.findById(req.params.id, (err, article) => {
-//     article.remove(() => {
-//       res.redirect('/articles');
-//     });
-//
-//   });
-// }
+  });
+}
+
+
+function deleteRoute(req, res) {
+  User.findById(req.params.id, (err, article) => {
+    article.remove(() => {
+      res.redirect('/articles');
+    });
+
+  });
+}
+
+function showRoute(req, res) {
+  User.findById(req.params.id)
+    .populate('user')
+    .exec((err, user, articles) => {
+      res.render('registrations/show', { user, articles});
+    });
+}
 
 module.exports = {
   // index: indexRoute,
-  // show: showRoute,
+  show: showRoute,
   new: newRoute,
-  create: createRoute
-  // edit: editRoute,
-  // update: updateRoute,
-  // delete: deleteRoute
+  create: createRoute,
+  edit: editRoute,
+  update: updateRoute,
+  delete: deleteRoute
 };

@@ -1,19 +1,15 @@
 <h1>User profile Page</h1>
 
- <p><%= user.name %></p>
+<img src="<%= user.image %>" alt="">
+ <p>Name: <%= user.name %></p>
+ <p>Email: <%= user.email %></p>
+ <p></p>
 
+ <% if (locals.isAuthenticated && locals.currentUser._id.equals(user._id)) { %>
 
- <% locals.articles.forEach(article => { %>
-
-   <% if (locals.currentUser._id.equals(article.user._id)){ %>
-     <div class="">
-       <a href="/articles/<%= article._id %>">
-         <img src="<%= article.image %>" alt="">
-         <h4><%= article.title %></h4>
-         <h5>Written by <%= 'default author'  %></h5>
-         <h5><%= article.subtitle %></h5>
-         <p><%= article.readingTime %> min read</p>
-       </a>
-     </div>
-   <% } %>
- <% }) %>
+   <a href="/user/<%= user._id %>/edit">Edit account</a>
+   <form class="" action="/user/<%= user._id %>" method="post">
+     <input type="hidden" name="_method" value="DELETE">
+     <button name="button">Remove account</button>
+   </form>
+ <% } %>

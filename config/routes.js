@@ -31,7 +31,11 @@ router.get('/logout', sessionsController.delete);
 
 router.post('/articles/:id/comments', secureRoute, articlesController.createComment);
 
-router.get('/user/:id', secureRoute, sessionsController.show);
+router.get('/user/:id', secureRoute, registrationsController.show);
+
+router.get('/user/:id/edit', secureRoute, registrationsController.edit);
+router.post('/user/:id', secureRoute, registrationsController.update);
+router.delete('/user/:id', secureRoute, registrationsController.delete);
 
 
 module.exports = router;
