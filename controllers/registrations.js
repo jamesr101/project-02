@@ -9,13 +9,6 @@ const User = require('../models/user');
 // }
 
 
-// function showRoute(req, res) {
-//   Article.findById(req.params.id)
-//     .exec((err, article) => {
-//       res.render('articles/show', { article });
-//     });
-// }
-
 function newRoute(req, res) {
   res.render('registrations/new');
 }
@@ -44,7 +37,7 @@ function updateRoute(req, res) {
   User.findById(req.params.id, (err, user) => {
     user.set(req.body);
     user.save(() => {
-      res.redirect(`/user/${req.params.id}`);
+      res.redirect(`/users/${req.params.id}`);
     });
 
   });
@@ -52,9 +45,12 @@ function updateRoute(req, res) {
 
 
 function deleteRoute(req, res) {
-  User.findById(req.params.id, (err, article) => {
-    article.remove(() => {
-      res.redirect('/articles');
+  User.findById(req.params.id, (err, user) => {
+    user.remove(() => {
+      req.session.regenerate(() => {
+        req.flash('info', 'Your account has been successfully deleted');
+        return res.redirect('/articles');
+      });
     });
 
   });

@@ -7,8 +7,8 @@
 
  <% if (locals.isAuthenticated && locals.currentUser._id.equals(user._id)) { %>
 
-   <a href="/user/<%= user._id %>/edit">Edit account</a>
-   <form class="" action="/user/<%= user._id %>" method="post">
+   <a href="/users/<%= user._id %>/edit">Edit account</a>
+   <form class="" action="/users/<%= user._id %>" method="post">
      <input type="hidden" name="_method" value="DELETE">
      <button name="button">Remove account</button>
    </form>

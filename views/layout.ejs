@@ -11,7 +11,7 @@
 
       <% if (locals.isAuthenticated) { %>
 
-        <a href="/user/<%= locals.currentUser._id %>">My account</a>
+        <a href="/users/<%= locals.currentUser._id %>">My account</a>
         <a href="/logout">Log out</a>
         <a href="/articles/new">Add an article</a>
       <% } else { %>
@@ -21,6 +21,14 @@
 
     </nav>
     <h1>LAYOUT PAGE</h1>
-    <%- body %>
+
+    <% for (const type in messages) { %>
+    <p class="notification <%= type %>"><%= messages[type] %></p>
+    <% } %>
+
+    <main>
+      <%- body %>
+    </main>
+
   </body>
 </html>
