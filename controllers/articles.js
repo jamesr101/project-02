@@ -61,6 +61,7 @@ function createCommentRoute(req, res) {
   Article.findById(req.params.id, (err, article) => {
     article.comments.push(req.body);
     article.save(() => {
+      req.flash('info', 'Your comment has been submitted for moderation');
       res.redirect(`/articles/${req.params.id}`);
     });
   });
@@ -68,7 +69,6 @@ function createCommentRoute(req, res) {
 
 function updateCommentRoute(req, res) {
 
-  console.log(req.body);
   req.body.moderated = (req.body.moderated === 'true');
 
   Article.findById(req.params.id, (err, article) => {
@@ -77,7 +77,6 @@ function updateCommentRoute(req, res) {
 
     comment.set(req.body);
     article.save(() => {
-      console.log(comment);
       res.redirect(`/articles/${req.params.id}`);
     });
   });
@@ -87,7 +86,6 @@ function updateCommentRoute(req, res) {
 function deleteCommentRoute(req, res) {
 
   Article.findById(req.params.id, (err, article) => {
-    console.log(article);
 
     const comment = article.comments.id(req.params.commentId);
 

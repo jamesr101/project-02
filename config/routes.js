@@ -38,7 +38,7 @@ router.get('/users/', secureRoute, adminRoute, registrationsController.index);
 router.get('/users/:id', secureRoute, registrationsController.show);
 
 router.get('/users/:id/edit', secureRoute, registrationsController.edit);
-router.post('/users/:id', secureRoute, registrationsController.update);
+router.put('/users/:id', secureRoute, registrationsController.update);
 router.delete('/users/:id', secureRoute, registrationsController.delete);
 
 

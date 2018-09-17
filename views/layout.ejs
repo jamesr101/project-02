@@ -3,26 +3,57 @@
   <head>
     <meta charset="utf-8">
     <title>Blog Site</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/articles">
+            Articles
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <% if (locals.isAuthenticated && locals.currentUser.admin) { %>
+            <a class="navbar-item" href="/users/">All Users</a>
+          <% } %>
+
+          <% if (locals.isAuthenticated) { %>
+
+            <a class="navbar-item" href="/users/<%= locals.currentUser._id %>">My account</a>
+            <a class="navbar-item" href="/logout">Log out</a>
+            <a class="navbar-item" href="/articles/new">Add an article</a>
+          <% } else { %>
+            <a class="navbar-item" href="/login">Login</a>
+            <a class="navbar-item" href="/register">Get Started</a>
+          <% } %>
+        </div>
+
+
+
+
+      </div>
+    </nav>
+
     <nav>
-      <a href="/">Home</a>
-      <a href="/articles">Articles</a>
 
-      <% if (locals.isAuthenticated && locals.currentUser.admin) { %>
-        <a href="/users/">All Users</a>
-      <% } %>
 
-      <% if (locals.isAuthenticated) { %>
 
-        <a href="/users/<%= locals.currentUser._id %>">My account</a>
-        <a href="/logout">Log out</a>
-        <a href="/articles/new">Add an article</a>
-      <% } else { %>
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-      <% } %>
 
     </nav>
     <h1>LAYOUT PAGE</h1>

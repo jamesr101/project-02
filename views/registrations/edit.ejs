@@ -1,45 +1,60 @@
-<h1>Edit User Page</h1>
 
-<form class="" action="/users/<%= user.id %>" method="post">
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2">Edit Account</h2>
+    <img src="" alt="">
 
-  <img src="<%=  %>" alt="">
-   <p>Name: <%= user.name %></p>
-   <p>Email: <%=  %></p>
+    <form class="" action="/users/<%= user.id %>" method="post">
+      <input type="hidden" name="_method" value="put">
 
-  <div class="">
-    <label for="name"></label>
-    <input type="text" id="name" name="name" value="<%= user.name %>">
+
+      <div class="field">
+        <label class="label" for="name">Name</label>
+        <div class="control">
+          <input class="input" type="text" id="name" name="name" value="<%= user.name %>">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="email">Email</label>
+        <div class="control">
+          <input class="input" type="email" id="email" name="email" value="<%= user.email %>">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="profileImage">Image</label>
+        <div class="control">
+          <input class="input" type="text" id="profileImage" name="profileImage" value="<%= user.profileImage %>" placeholder="Image URL">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="password">Password</label>
+        <div class="control">
+          <input class="input" type="password" id="password" name="password" placeholder="Password">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="passwordConfirmation">Confirm Password</label>
+        <div class="control">
+          <input class="input" type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirm password">
+        </div>
+      </div>
+
+      <% if (locals.isAuthenticated && locals.currentUser.admin) { %>
+        <div class="">
+        <label for="admin"></label>
+        <input type="radio" id="admin" name="admin" value="true"> Admin<br>
+        <input type="radio" id="admin" name="admin" value="false"> non-Admin<br>
+        </div>
+      <% } %>
+
+
+      <button class="button is-primary">Save</button>
+
+    </form>
+
   </div>
-
-  <div class="">
-    <label for="email"></label>
-    <input type="email" id="email" name="email" value="<%= user.email %>">
-  </div>
-
-  <div class="">
-    <label for="profileImage"></label>
-    <input type="text" id="profileImage" name="profileImage" value="<%= user.image %>">
-  </div>
-
-  <div class="">
-    <label for="password"></label>
-    <input type="password" id="password" name="password" placeholder="Password">
-  </div>
-
-  <div class="">
-    <label for="passwordConfirmation"></label>
-    <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirm password">
-  </div>
-
-  <% if (locals.isAuthenticated && locals.currentUser.admin) { %>
-    <div class="">
-      <label for="admin"></label>
-      <input type="radio" id="admin" name="admin" value="true"> Admin<br>
-      <input type="radio" id="admin" name="admin" value="false"> non-Admin<br>
-    </div>
-  <% } %>
-
-
-  <button name="button">Submit</button>
-
-</form>
+</section>

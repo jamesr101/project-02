@@ -1,16 +1,28 @@
-<h1>SESSIONS NEW</h1>
-<h2>An empty login form</h2>
 
-<form action="/login" method="post">
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2">Sign in</h2>
+    <form action="/login" method="post">
 
-  <div class="">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" placeholder="Email">
-  </div>
-  <div class="">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" placeholder="Password">
-  </div>
+      <div class="field">
+        <label class="label" for="email">Email</label>
+        <div class="control">
+          <input class="input" type="email" name="email" id="email" placeholder="Email">
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <label class="label" for="password">Password</label>
+          <input class="input" type="password" name="password" id="password" placeholder="Password">
+        </div>
+      </div>
 
-  <button>Submit</button>
-</form>
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary">Log in</button>
+        </div>
+      </div>
+
+    </form>
+  </section>
+</div>

@@ -1,15 +1,61 @@
-<h1>User profile Page</h1>
 
-<img src="<%= user.image %>" alt="">
- <p>Name: <%= user.name %></p>
- <p>Email: <%= user.email %></p>
- <p>Admin: <%= user.admin %></p>
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2">My Account</h2>
 
- <% if (locals.isAuthenticated && (locals.currentUser._id.equals(user._id) || locals.currentUser.admin)) { %>
+    <figure class="image is-128x128">
+      <img class="is-rounded" src="<%= user.profileImage %>">
+    </figure>
 
-   <a href="/users/<%= user._id %>/edit">Edit account</a>
-   <form class="" action="/users/<%= user._id %>" method="post">
-     <input type="hidden" name="_method" value="DELETE">
-     <button name="button">Remove account</button>
-   </form>
- <% } %>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Name:</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <p class="input is-static"><%= user.name %></p>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Email:</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <p class="input is-static"><%= user.email %></p>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Admin:</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <p class="input is-static"><%= user.admin %></p>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <% if (locals.isAuthenticated && (locals.currentUser._id.equals(user._id) || locals.currentUser.admin)) { %>
+
+      <div class="field is-horizontal">
+        <a class="button is-primary" href="/users/<%= user._id %>/edit">Edit account</a>
+        <form class="" action="/users/<%= user._id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="button is-danger" name="button">Remove account</button>
+        </form>
+      </div>
+    <% } %>
+  </div>
+</section>

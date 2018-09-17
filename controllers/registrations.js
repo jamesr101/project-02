@@ -23,6 +23,7 @@ function showRoute(req, res) {
   User.findById(req.params.id)
     .populate('user')
     .exec((err, user, articles) => {
+      console.log(err);
       res.render('registrations/show', { user, articles});
     });
 }
