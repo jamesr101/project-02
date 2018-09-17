@@ -3,7 +3,8 @@ const marked = require('marked');
 
 const commentSchema = new mongoose.Schema({
   content: { type: String, required: true, maxlenght: 280 },
-  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  moderated: {type: Boolean, default: false}
 }, {
   timestamps: true
 });

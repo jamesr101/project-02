@@ -33,8 +33,9 @@
 
   <% if (locals.isAuthenticated && locals.currentUser.admin) { %>
     <div class="">
-      <label for="admin">Admin</label>
-      <input type="checkbox" id="admin" name="admin" value="true">
+      <label for="admin"></label>
+      <input type="radio" id="admin" name="admin" value="true"> Admin<br>
+      <input type="radio" id="admin" name="admin" value="false"> non-Admin<br>
     </div>
   <% } %>
 

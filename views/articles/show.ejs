@@ -15,17 +15,33 @@
     <p>Published: <%= article.published %></p>
 
     <div class="comments">
-      <% article.comments.forEach( comment => {%>
-        <p><%= comment.user.name %></p>
-        <p><%= comment.content %></p>
-        <% if (locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
+      <% article.comments.forEach( comment => { %>
 
+        <% if (comment.moderated || (locals.isAuthenticated && locals.currentUser.admin)){ %>
+          <p><%= comment.user.name %></p>
+          <p><%= comment.content %> | Moderated = <%= comment.moderated %></p>
 
-          <form class="" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <button name="button">Delete</button>
-          </form>
+          <% if(locals.isAuthenticated && locals.currentUser.admin) { %>
+            <form class="" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
+              <input type="hidden" name="_method" value="PUT">
+              <label class="monderated">Monderated</label>
+              <input type="checkbox" id="monderated" name="moderated" value="true"<% if(comment.moderated) { %> checked<% } %>/>
+
+              <button>Submit moderation</button>
+            </form>
           <% } %>
+
+          <% if (locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
+
+            <form class="" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <button name="button">Delete</button>
+            </form>
+
+          <% } %>
+
+        <% } %>
+
       <% }); %>
     </div>
 
@@ -35,7 +51,7 @@
       <button>Submit comment</button>
     </form>
 
-    <% if ((locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
+    <% if ((locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
 
       <a href="/articles/<%= article._id %>/edit">Edit article</a>
       <form class="" action="/articles/<%= article._id %>" method="post">

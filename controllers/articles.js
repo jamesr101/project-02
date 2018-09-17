@@ -66,23 +66,23 @@ function createCommentRoute(req, res) {
   });
 }
 
-// function deleteCommentRoute(req, res) {
-//   req.body.user = req.currentUser;
-//
-//   Article.findById(req.params.id, (err, article) => {
-//     article.comments.remove();
-//     article.save(() => {
-//       res.redirect(`/articles/${req.params.id}`);
-//     });
-//   });
-// }
-// function showRoute(req, res) {
-//   Article.findById(req.params.id)
-//     .populate('user comments.user')
-//     .exec((err, article) => {
-//       res.render('articles/show', { article });
-//     });
-// }
+function updateCommentRoute(req, res) {
+
+  console.log(req.body);
+  req.body.moderated = (req.body.moderated === 'true');
+
+  Article.findById(req.params.id, (err, article) => {
+
+    const comment = article.comments.id(req.params.commentId);
+
+    comment.set(req.body);
+    article.save(() => {
+      console.log(comment);
+      res.redirect(`/articles/${req.params.id}`);
+    });
+  });
+}
+
 
 function deleteCommentRoute(req, res) {
 
@@ -113,5 +113,6 @@ module.exports = {
   update: updateRoute,
   delete: deleteRoute,
   createComment: createCommentRoute,
+  updateComment: updateCommentRoute,
   deleteComment: deleteCommentRoute
 };
