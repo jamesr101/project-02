@@ -8,6 +8,22 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const auth = require('./lib/auth');
 const flash = require('express-flash');
+const marked = require('marked');
+
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  highlight: function(code) {
+    return require('highlight.js').highlightAuto(code).value;
+  },
+  pedantic: false,
+  gfm: true,
+  tables: true,
+  breaks: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false,
+  xhtml: false
+});
 
 const {dbURI, port } = require('./config/environment');
 
@@ -34,9 +50,13 @@ app.use(session({
 app.use(express.static(`${__dirname}/public`));
 
 
+console.log(marked('I am using __markdown__.'));
+
 app.use(flash());
 app.use(auth);
 
 app.use(routes);
+
+
 
 app.listen(port, () => console.log(`Express is running on port ${port}`));

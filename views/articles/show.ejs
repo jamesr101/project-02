@@ -7,7 +7,11 @@
     <h5>Written by <%= 'default author' %></h5>
     <h5><%= article.subtitle %></h5>
     <p><%= article.readingTime %> min read</p>
-    <p><%= article.text %> THE END</p>
+
+
+    <p><%- article.textHTML %> THE END</p>
+    <p><%- '<strong>This</strong> is raw html' %></p>
+
 
     <p><%= article.published %></p>
 
