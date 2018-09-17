@@ -3,7 +3,7 @@
 <img src="<%= user.image %>" alt="">
  <p>Name: <%= user.name %></p>
  <p>Email: <%= user.email %></p>
- <p></p>
+ <p>Admin: <%= user.admin %></p>
 
  <% if (locals.isAuthenticated && locals.currentUser._id.equals(user._id)) { %>
 

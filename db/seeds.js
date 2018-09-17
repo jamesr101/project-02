@@ -10,11 +10,12 @@ mongoose.connect(dbURI, (err, db) => {
   db.dropDatabase(); // delete the database ready for new data
 
   User.create([{
-    name: 'User One',
-    email: 'userone@gmail.com',
+    name: 'Adim User',
+    email: 'admin@gmail.com',
     profileImage: '',
     password: 'pass',
-    passwordConfirmation: 'pass'
+    passwordConfirmation: 'pass',
+    admin: true
   },{
     name: 'User Two',
     email: 'usertwo@gmail.com',

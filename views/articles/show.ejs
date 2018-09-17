@@ -35,7 +35,7 @@
       <button>Submit comment</button>
     </form>
 
-    <% if (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) { %>
+    <% if ((locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
 
       <a href="/articles/<%= article._id %>/edit">Edit article</a>
       <form class="" action="/articles/<%= article._id %>" method="post">
