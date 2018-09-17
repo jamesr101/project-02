@@ -22,8 +22,16 @@ function newRoute(req, res) {
 
 function createRoute(req, res) {
   User.create(req.body, () => {
-    res.redirect('/articles');
+    res.redirect('/login');
   });
+}
+
+function showRoute(req, res) {
+  User.findById(req.params.id)
+    .populate('user')
+    .exec((err, user, articles) => {
+      res.render('registrations/show', { user, articles});
+    });
 }
 
 function editRoute(req, res) {
@@ -52,13 +60,6 @@ function deleteRoute(req, res) {
   });
 }
 
-function showRoute(req, res) {
-  User.findById(req.params.id)
-    .populate('user')
-    .exec((err, user, articles) => {
-      res.render('registrations/show', { user, articles});
-    });
-}
 
 module.exports = {
   // index: indexRoute,
