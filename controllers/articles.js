@@ -66,6 +66,44 @@ function createCommentRoute(req, res) {
   });
 }
 
+// function deleteCommentRoute(req, res) {
+//   req.body.user = req.currentUser;
+//
+//   Article.findById(req.params.id, (err, article) => {
+//     article.comments.remove();
+//     article.save(() => {
+//       res.redirect(`/articles/${req.params.id}`);
+//     });
+//   });
+// }
+// function showRoute(req, res) {
+//   Article.findById(req.params.id)
+//     .populate('user comments.user')
+//     .exec((err, article) => {
+//       res.render('articles/show', { article });
+//     });
+// }
+
+function deleteCommentRoute(req, res) {
+
+  Article.findById(req.params.id, (err, article) => {
+    console.log(article);
+
+    const comment = article.comments.id(req.params.commentId);
+
+
+    if(!req.currentUser._id.equals(comment.user)) {
+      return res.redirect(`/articles/${req.params.id}`);
+    }
+
+
+    comment.remove();
+    article.save(() => {
+      res.redirect(`/articles/${req.params.id}`);
+    });
+  });
+}
+
 module.exports = {
   index: indexRoute,
   show: showRoute,
@@ -74,5 +112,6 @@ module.exports = {
   edit: editRoute,
   update: updateRoute,
   delete: deleteRoute,
-  createComment: createCommentRoute
+  createComment: createCommentRoute,
+  deleteComment: deleteCommentRoute
 };

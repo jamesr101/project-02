@@ -10,15 +10,22 @@
 
 
     <p><%- article.textHTML %> THE END</p>
-    <p><%- '<strong>This</strong> is raw html' %></p>
 
 
-    <p><%= article.published %></p>
+    <p>Published: <%= article.published %></p>
 
     <div class="comments">
       <% article.comments.forEach( comment => {%>
         <p><%= comment.user.name %></p>
         <p><%= comment.content %></p>
+        <% if (locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
+
+
+          <form class="" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <button name="button">Delete</button>
+          </form>
+          <% } %>
       <% }); %>
     </div>
 
