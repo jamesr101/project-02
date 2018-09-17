@@ -1,0 +1,14 @@
+<h1>User profile Page</h1>
+
+
+
+<% locals.users.forEach(user => { %>
+
+    <div class="">
+      <a href="/users/<%= user._id %>">
+        <h4>Name: <%= user.name %></h4>
+        <h5>Email: <%= user.email %></h5>
+        <p>Admin: <%= user.admin %></p>
+      </a>
+    </div>
+<% }) %>

@@ -2,11 +2,11 @@ const User = require('../models/user');
 
 
 
-// function indexRoute(req, res) {
-//   Article.find().sort({title: 1 }).exec((err, articles) => {
-//     res.render('articles/index', { articles });
-//   });
-// }
+function indexRoute(req, res) {
+  User.find().sort({email: 1 }).exec((err, users) => {
+    res.render('registrations/index', { users });
+  });
+}
 
 
 function newRoute(req, res) {
@@ -58,7 +58,7 @@ function deleteRoute(req, res) {
 
 
 module.exports = {
-  // index: indexRoute,
+  index: indexRoute,
   show: showRoute,
   new: newRoute,
   create: createRoute,

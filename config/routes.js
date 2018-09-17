@@ -32,6 +32,7 @@ router.get('/logout', sessionsController.delete);
 router.post('/articles/:id/comments', secureRoute, articlesController.createComment);
 router.delete('/articles/:id/comments/:commentId', secureRoute, articlesController.deleteComment);
 
+router.get('/users/', secureRoute, registrationsController.index);
 router.get('/users/:id', secureRoute, registrationsController.show);
 
 router.get('/users/:id/edit', secureRoute, registrationsController.edit);
