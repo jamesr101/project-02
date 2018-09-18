@@ -4,20 +4,21 @@ const Article = require('../models/article');
 
 function indexRoute(req, res) {
 
-  const query = {};
+  const queryTitle = {};
+  const querySubtitle = {};
 
-  if(req.query.search) query.title = new RegExp(req.query.search, 'i');
-  console.log('query --->', query);
-  console.log('query.name --->', query.title);
+  if(req.query.search) {
+    queryTitle.title = querySubtitle.subtitle = new RegExp(req.query.search, 'i');
+  }
 
-  Article.find(query).sort({title: 1 })
+
+  Article.find(  {$or: [ queryTitle, querySubtitle ] }).sort({title: 1 })
     .populate('user')
     .exec((err, articles) => {
       console.log(err);
       res.render('articles/index', { articles, search: req.query.search });
     });
 
-  console.log(Article.find(query).title);
 }
 
 
