@@ -50,12 +50,13 @@
       </div>
     </nav>
 
-    <nav>
+    <form class="form" action="search" method="post">
+      <input type="hidden" name="_method" value="get">
+      <button type="button" name="button">
+      <input class="input is-rounded is-large" type="text" placeholder="Search" name="search">
+      </button>
+    </form>
 
-
-
-
-    </nav>
     <h1>LAYOUT PAGE</h1>
 
     <% for (const type in messages) { %>
