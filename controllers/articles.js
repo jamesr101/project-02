@@ -3,12 +3,33 @@ const Article = require('../models/article');
 
 
 function indexRoute(req, res) {
-  Article.find().sort({title: 1 })
+
+  const query = {};
+
+  if(req.query.search) query.title = new RegExp(req.query.search, 'i');
+  console.log('query --->', query);
+  console.log('query.name --->', query.title);
+
+  Article.find(query).sort({title: 1 })
     .populate('user')
     .exec((err, articles) => {
-      res.render('articles/index', { articles });
+      console.log(err);
+      res.render('articles/index', { articles, search: req.query.search });
     });
+
+  console.log(Article.find(query).title);
 }
+
+
+// function indexRoute(req, res) {
+//
+//   const query = {};
+//   if(req.query.search) query.name = new RegExp(req.query.search, 'i');
+//
+//   Cocktail.find(query).sort({ name: 1 }).exec((err, cocktails) => {
+//     res.render('cocktails/index', { cocktails, search: req.query.search });
+//   });
+// }
 
 
 function showRoute(req, res) {

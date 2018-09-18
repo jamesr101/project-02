@@ -50,12 +50,16 @@
       </div>
     </nav>
 
-    <form class="form" action="search" method="post">
-      <input type="hidden" name="_method" value="get">
-      <button type="button" name="button">
-      <input class="input is-rounded is-large" type="text" placeholder="Search" name="search">
-      </button>
+    <form method="GET" action="/articles">
+      <div class="field has-addons">
+        <!-- <div class="control is-rounded"> -->
+          <input class="input is-rounded is-large" name="search" type="text" placeholder="Search" value="<%= locals.search %>">
+        <!-- </div> -->
+
+      </div>
     </form>
+
+
 
     <h1>LAYOUT PAGE</h1>
 
