@@ -18,7 +18,7 @@
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong><%= article.title %></strong> <small>Written by <%= 'default author'  %></small> <small><%= article.readingTime %> min read</small>
+                  <strong><%= article.title %></strong> <small>Written by <%= article.user.name  %></small> <small><%= article.readingTime %> min read</small>
                   <br>
                   <%= article.subtitle %>
                 </p>

@@ -7,7 +7,7 @@
     <div class="">
       <img src="<%= article.image %>" alt="">
       <h2 class="title is-2"><%= article.title %></h2>
-      <h5>Written by <%= 'default author' %></h5>
+      <h5>Written by <%= article.user.name %></h5>
       <h5><%= article.subtitle %></h5>
       <p><%= article.readingTime %> min read</p>
 
