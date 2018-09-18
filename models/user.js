@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const Article = require('./article');
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -34,6 +35,10 @@ userSchema.pre('save', function hashPassword(next) {
   }
 
   next();
+});
+
+userSchema.pre('remove', function removeUserArticles(next) {
+  this.model('Article').remove({ user: this._id }, next);
 });
 
 userSchema.methods.validatePassword = function validatePassword(password) {
