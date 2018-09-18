@@ -19,13 +19,23 @@ function createRoute(req, res) {
   });
 }
 
+// Article.find().sort({title: 1 })
+//   .populate('user')
+//   .exec((err, articles) => {
+//     res.render('articles/index', { articles });
+//   });
+
+
 function showRoute(req, res) {
-  User.findById(req.params.id)
-    .populate('user')
-    .exec((err, user, articles) => {
-      console.log(err);
-      res.render('registrations/show', { user, articles});
-    });
+
+  console.log('CURRENT USER ==========>', req.currentUser);
+  // User.findById(req.currentUser._id).populate('cocktails').exec((err, user) => {
+  // get all the cocktails that a user created...
+  User.populate(req.currentUser, { path: 'articles' }, (err, user) => {
+
+    console.log(user.articles);
+    res.render('registrations/show', { user });
+  });
 }
 
 function editRoute(req, res) {

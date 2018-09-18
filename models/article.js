@@ -23,6 +23,7 @@ const articleSchema = new mongoose.Schema({
   published: {type: Boolean}
 });
 
+
 articleSchema.pre('save', function convertToMarkddown(next) {
   if(this.isModified('text')) {
     this.textHTML = marked(this.text);

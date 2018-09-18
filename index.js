@@ -51,8 +51,8 @@ app.use(express.static(`${__dirname}/public`));
 
 
 console.log(marked('I am using __markdown__.'));
-
 app.use(flash());
+
 app.use(auth);
 
 app.use(routes);

@@ -4,66 +4,66 @@
   <div class="container">
 
 
-  <div class="">
-    <img src="<%= article.image %>" alt="">
-    <h4><%= article.title %></h4>
-    <h5>Written by <%= 'default author' %></h5>
-    <h5><%= article.subtitle %></h5>
-    <p><%= article.readingTime %> min read</p>
+    <div class="">
+      <img src="<%= article.image %>" alt="">
+      <h2 class="title is-2"><%= article.title %></h2>
+      <h5>Written by <%= 'default author' %></h5>
+      <h5><%= article.subtitle %></h5>
+      <p><%= article.readingTime %> min read</p>
 
 
-    <p><%- article.textHTML %> THE END</p>
+      <p><%- article.textHTML %> THE END</p>
 
 
-    <p>Published: <%= article.published %></p>
+      <p>Published: <%= article.published %></p>
 
-    <div class="comments">
-      <% article.comments.forEach( comment => { %>
+      <div class="comments">
+        <% article.comments.forEach( comment => { %>
 
-        <% if (comment.moderated || (locals.isAuthenticated && locals.currentUser.admin)){ %>
-          <p><%= comment.user.name %></p>
-          <p><%= comment.content %> | Moderated = <%= comment.moderated %></p>
+          <% if (comment.moderated || (locals.isAuthenticated && locals.currentUser.admin)){ %>
+            <p><%= comment.user.name %></p>
+            <p><%= comment.content %> | Moderated = <%= comment.moderated %></p>
 
-          <% if(locals.isAuthenticated && locals.currentUser.admin) { %>
-            <form class="" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
-              <input type="hidden" name="_method" value="PUT">
-              <label class="monderated">Monderated</label>
-              <input type="checkbox" id="monderated" name="moderated" value="true"<% if(comment.moderated) { %> checked<% } %>/>
+            <% if(locals.isAuthenticated && locals.currentUser.admin) { %>
+              <form class="" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
+                <input type="hidden" name="_method" value="PUT">
+                <label class="monderated">Monderated</label>
+                <input type="checkbox" id="monderated" name="moderated" value="true"<% if(comment.moderated) { %> checked<% } %>/>
 
-              <button>Submit moderation</button>
-            </form>
+                <button>Submit moderation</button>
+              </form>
+            <% } %>
+
+            <% if (locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
+
+              <form class="" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button name="button">Delete</button>
+              </form>
+
+            <% } %>
+
           <% } %>
 
-          <% if (locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
+        <% }); %>
+      </div>
 
-            <form class="" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
-              <input type="hidden" name="_method" value="DELETE">
-              <button name="button">Delete</button>
-            </form>
-
-          <% } %>
-
-        <% } %>
-
-      <% }); %>
-    </div>
-
-    <form class="" action="/articles/<%= article._id %>/comments" method="post">
-      <label class="comment">Comment</label>
-      <input type="text" id="comment" name="content" placeholder="Comment (max 280 characters)"/>
-      <button>Submit comment</button>
-    </form>
-
-    <% if ((locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
-
-      <a href="/articles/<%= article._id %>/edit">Edit article</a>
-      <form class="" action="/articles/<%= article._id %>" method="post">
-        <input type="hidden" name="_method" value="DELETE">
-        <button name="button">Remove article</button>
+      <form class="" action="/articles/<%= article._id %>/comments" method="post">
+        <label class="comment">Comment</label>
+        <input type="text" id="comment" name="content" placeholder="Comment (max 280 characters)"/>
+        <button>Submit comment</button>
       </form>
-    <% } %>
+
+      <% if ((locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
+
+        <a href="/articles/<%= article._id %>/edit">Edit article</a>
+        <form class="" action="/articles/<%= article._id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <button name="button">Remove article</button>
+        </form>
+      <% } %>
 
 
+    </div>
   </div>
-</div>
 </div>

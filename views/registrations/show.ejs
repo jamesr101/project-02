@@ -4,7 +4,7 @@
     <h2 class="title is-2">My Account</h2>
 
     <figure class="image is-128x128">
-      <img class="is-rounded" src="<%= user.profileImage %>">
+      <img class="is-rounded" src="<%= locals.currentUser.profileImage %>">
     </figure>
 
 
@@ -57,5 +57,23 @@
         </form>
       </div>
     <% } %>
+
+
+    <% user.articles.forEach( article => { %>
+
+      <img src="<%= article.image %>" alt="">
+      <h2 class="title is-2"><%= article.title %></h2>
+      <h5>Written by <%= 'default author' %></h5>
+      <h5><%= article.subtitle %></h5>
+      <p><%= article.readingTime %> min read</p>
+
+
+      <p><%- article.textHTML %> THE END</p>
+
+
+    <% }) %>
+
+
+
   </div>
 </section>
