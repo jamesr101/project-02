@@ -4,12 +4,12 @@
 
   <div class="">
     <label for="title"></label>
-    <input type="text" id="title" name="title" placeholder="Title">
+    <input type="text" id="title" name="title" placeholder="Title" required>
   </div>
 
   <div class="">
     <label for="subtitle"></label>
-    <input type="text" id="subtitle" name="subtitle" placeholder="Subtitle">
+    <input type="text" id="subtitle" name="subtitle" placeholder="Subtitle" required>
   </div>
 
   <div class="">
@@ -19,7 +19,7 @@
 
   <div class="">
     <label for="text"></label>
-    <textarea name="text"></textarea>
+    <textarea name="text" required></textarea>
     <%# <input type="text" id="text" name="text" placeholder="Write article here"> %>
   </div>
 
@@ -35,7 +35,7 @@
 
   <div class="">
     <label for="readingTime"></label>
-    <input type="text" id="readingTime" name="readingTime" placeholder="Reading Time">
+    <input type="number" id="readingTime" name="readingTime" placeholder="Reading Time" min="1" max="60" required>
   </div>
 
   <div class="">

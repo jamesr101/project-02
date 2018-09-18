@@ -48,11 +48,13 @@
         <% }); %>
       </div>
 
+
       <form class="" action="/articles/<%= article._id %>/comments" method="post">
         <label class="comment">Comment</label>
-        <input type="text" id="comment" name="content" placeholder="Comment (max 280 characters)"/>
+        <input type="text" id="comment" name="content" placeholder="Comment (max 280 characters)" required/>
         <button>Submit comment</button>
       </form>
+
 
       <% if ((locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
 

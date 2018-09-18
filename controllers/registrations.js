@@ -1,5 +1,4 @@
 const User = require('../models/user');
-// const Article = require('../models/article');
 
 
 
@@ -16,16 +15,10 @@ function newRoute(req, res) {
 
 function createRoute(req, res) {
   User.create(req.body, () => {
+    req.flash('info', 'Your account has been created');
     res.redirect('/login');
   });
 }
-
-// Article.find().sort({title: 1 })
-//   .populate('user')
-//   .exec((err, articles) => {
-//     res.render('articles/index', { articles });
-//   });
-
 
 function showRoute(req, res) {
   // User.findById(req.currentUser._id).populate('cocktails').exec((err, user) => {
@@ -47,44 +40,13 @@ function updateRoute(req, res) {
   User.findById(req.params.id, (err, user) => {
     user.set(req.body);
     user.save(() => {
+      req.flash('info', 'Your account has been updated');
       res.redirect(`/users/${req.params.id}`);
     });
 
   });
 }
 
-
-
-// function deleteRoute(req, res) {
-//
-//   console.log('Starting deletion process');
-//   console.log('req.params.id ------>', req.params.id);
-//
-//
-//   Article.find({user: req.params.id}, (err, article) => {
-//     console.log(article);
-//     article.remove(() => {
-//       console.log('article deleted');
-//
-//     });
-//     // if (article){
-//
-//
-//     //
-//   });
-//
-//   // User.findById(req.params.id, (err, user) => {
-//   //   // console.log(user);
-//   //   // user.remove(() => {
-//   //   //   req.session.regenerate(() => {
-//   //   //     req.flash('info', 'Your account has been successfully deleted');
-//   //   //     return res.redirect('/articles');
-//   //   //   });
-//   //   // });
-//   // });
-//
-//   // });
-// }
 
 
 

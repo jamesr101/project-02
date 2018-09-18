@@ -1,7 +1,6 @@
 const Article = require('../models/article');
 
 
-
 function indexRoute(req, res) {
 
   const queryTitle = {};
@@ -22,16 +21,6 @@ function indexRoute(req, res) {
 }
 
 
-// function indexRoute(req, res) {
-//
-//   const query = {};
-//   if(req.query.search) query.name = new RegExp(req.query.search, 'i');
-//
-//   Cocktail.find(query).sort({ name: 1 }).exec((err, cocktails) => {
-//     res.render('cocktails/index', { cocktails, search: req.query.search });
-//   });
-// }
-
 
 function showRoute(req, res) {
   Article.findById(req.params.id)
@@ -48,6 +37,7 @@ function newRoute(req, res) {
 function createRoute(req, res) {
   req.body.user = req.currentUser;
   Article.create(req.body, () => {
+    req.flash('info', 'Your article has been created');
     res.redirect('/articles');
   });
 }
@@ -62,6 +52,7 @@ function updateRoute(req, res) {
   Article.findById(req.params.id, (err, article) => {
     article.set(req.body);
     article.save(() => {
+      req.flash('info', 'Your article has been updated');
       res.redirect(`/articles/${req.params.id}`);
     });
 
@@ -71,6 +62,7 @@ function updateRoute(req, res) {
 function deleteRoute(req, res) {
   Article.findById(req.params.id, (err, article) => {
     article.remove(() => {
+      req.flash('info', 'Your article has been deleted');
       res.redirect('/articles');
     });
 
@@ -99,6 +91,7 @@ function updateCommentRoute(req, res) {
 
     comment.set(req.body);
     article.save(() => {
+      req.flash('info', 'Your article has been updated');
       res.redirect(`/articles/${req.params.id}`);
     });
   });
@@ -113,12 +106,14 @@ function deleteCommentRoute(req, res) {
 
 
     if(!req.currentUser._id.equals(comment.user)) {
+      req.flash('danger', 'You do not have the authorisation');
       return res.redirect(`/articles/${req.params.id}`);
     }
 
 
     comment.remove();
     article.save(() => {
+      req.flash('info', 'Your comment has been deleted');
       res.redirect(`/articles/${req.params.id}`);
     });
   });

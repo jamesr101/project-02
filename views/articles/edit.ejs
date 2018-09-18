@@ -6,17 +6,17 @@
 
   <div class="">
     <label for="title"></label>
-    <input type="text" id="title" name="title" value="<%= article.title %>">
+    <input type="text" id="title" name="title" value="<%= article.title %>" required>
   </div>
 
   <div class="">
     <label for="subtitle"></label>
-    <input type="text" id="subtitle" name="subtitle" value="<%= article.subtitle %>">
+    <input type="text" id="subtitle" name="subtitle" value="<%= article.subtitle %>" required>
   </div>
 
   <div class="">
     <label for="image"></label>
-    <input type="text" id="image" name="image" value="<%= article.image %>">
+    <input type="text" id="image" name="image" value="<%= article.image %>" >
   </div>
 
   <div class="">
@@ -31,7 +31,7 @@
 
   <div class="">
     <label for="readingTime"></label>
-    <input type="text" id="readingTime" name="readingTime" value="<%= article.readingTime %>">
+    <input type="number" min="1" max="60" id="readingTime" name="readingTime" value="<%= article.readingTime %>" required>
   </div>
 
   <div class="">

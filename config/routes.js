@@ -2,7 +2,6 @@ const router = require('express').Router();
 const articlesController = require('../controllers/articles');
 const registrationsController = require('../controllers/registrations');
 const sessionsController = require('../controllers/sessions');
-const searchesController = require('../controllers/searches');
 const secureRoute = require('../lib/secureRoute');
 const adminRoute = require('../lib/adminRoute');
 
@@ -43,7 +42,6 @@ router.get('/users/:id/edit', secureRoute, registrationsController.edit);
 router.put('/users/:id', secureRoute, registrationsController.update);
 router.delete('/users/:id', secureRoute, registrationsController.delete);
 
-router.get('/search', searchesController.index);
 
 
 module.exports = router;

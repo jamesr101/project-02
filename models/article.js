@@ -13,7 +13,7 @@ const articleSchema = new mongoose.Schema({
   title: { type: String, required: true },
   subtitle: { type: String, required: true },
   image: { type: String, pattern: /^https?:\/\/.+/ },
-  text: { type: String},
+  text: { type: String, required: true},
   textHTML: { type: String},
   blockQuote: { type: String},
   readingTime: {type: Number, required: true},

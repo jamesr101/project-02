@@ -9,13 +9,13 @@ function createRoute(req, res) {
   User.findOne({email: req.body.email }, (err, user) => {
 
     if(!user || !user.validatePassword(req.body.password)) {
-      // req.flash('danger', 'Invalid credentials');
+      req.flash('danger', 'Invalid credentials');
       return res.redirect('/login');
     }
 
     req.session.userId = user._id;
 
-    // req.flash('info', `Welcome back ${user.username}!`);
+    req.flash('info', `Welcome back ${user.name}!`);
     res.redirect('/articles');
   });
 }
