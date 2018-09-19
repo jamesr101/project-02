@@ -24,6 +24,15 @@
 
       <p>Published: <%= article.published %></p>
 
+      <% if ((locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
+
+        <a href="/articles/<%= article._id %>/edit">Edit article</a>
+        <form class="" action="/articles/<%= article._id %>" method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <button name="button">Remove article</button>
+        </form>
+      <% } %>
+
       <div class="comments">
         <% article.comments.forEach( comment => { %>
 
@@ -62,7 +71,7 @@
 
                 <figure class="media-left">
                   <p class="image is-64x64 is-square">
-                    <img class="is-rounded" src="<%= comment.user.profileImage %>">
+                    <img class="is-rounded" src="<%= comment.user.profileImageSRC %>">
                   </p>
                 </figure>
                 <div class="media-content">
@@ -101,7 +110,7 @@
       <article class="comment media">
         <figure class="media-left">
           <p class="image is-64x64 is-square">
-            <img class="is-rounded" src="<% if (locals.isAuthenticated){ %><%= locals.currentUser.profileImage %><% } %>">
+            <img class="is-rounded" src="<% if (locals.isAuthenticated){ %><%= locals.currentUser.profileImageSRC %><% } %>">
           </p>
         </figure>
         <div class="media-content">
@@ -127,14 +136,7 @@
         </div>
 
 
-      <% if ((locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
 
-        <a href="/articles/<%= article._id %>/edit">Edit article</a>
-        <form class="" action="/articles/<%= article._id %>" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <button name="button">Remove article</button>
-        </form>
-      <% } %>
 
 
     </div>

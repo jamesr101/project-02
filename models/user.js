@@ -15,6 +15,12 @@ userSchema.virtual('articles', {
   ref: 'Article'
 });
 
+
+userSchema.virtual('profileImageSRC')
+  .get(function () {
+    return this.profileImage || 'https://startupsclub.com/image/user-default.png';
+  });
+
 userSchema.virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(passwordConfirmation){
     this._passwordConfirmation = passwordConfirmation;
