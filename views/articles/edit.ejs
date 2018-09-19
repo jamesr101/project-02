@@ -1,44 +1,69 @@
-<h1>New Article Page</h1>
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2">Edit article</h2>
+    <form class="" action="/articles/<%= article._id %>" method="post">
 
-<form class="" action="/articles/<%= article._id %>" method="post">
+      <input type="hidden" name="_method" value="PUT">
 
-  <input type="hidden" name="_method" value="PUT">
+      <div class="field">
+        <label for="title">Title</label>
+        <div class="control">
+          <input class="input is-large" type="text" id="title" name="title" value="<%= article.title %>" required>
+        </div>
+      </div>
 
-  <div class="">
-    <label for="title"></label>
-    <input type="text" id="title" name="title" value="<%= article.title %>" required>
+      <div class="field">
+        <label for="subtitle">Subtitle</label>
+        <div class="control">
+          <input class="input is-medium" type="text" id="subtitle" name="subtitle" value="<%= article.subtitle %>" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="image">Image link</label>
+        <div class="control">
+          <input class="input" type="text" id="image" name="image" value="<%= article.image %>" >
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="text">Copy</label>
+        <div class="control">
+          <textarea class="textarea" id="text" name="text" rows="15"><%= article.text %></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="blockQuote">Block quote</label>
+        <div class="control">
+          <input class="input" type="text" id="blockQuote" name="blockQuote" value="<%= article.blockQuote %>">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="readingTime">Reading time</label>
+        <div class="control">
+          <input class="input" type="number" min="1" max="60" id="readingTime" name="readingTime" value="<%= article.readingTime %>" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="published" value="true" checked>
+            Published
+          </label>
+          <label class="radio">
+            <input type="radio" name="published" value="false"<% if (article.published === false) { %> checked<% } %>>
+            Unpublished
+          </label>
+        </div>
+      </div>
+
+
+      <button class="button is-primary" name="button">Submit</button>
+
+    </form>
+
   </div>
-
-  <div class="">
-    <label for="subtitle"></label>
-    <input type="text" id="subtitle" name="subtitle" value="<%= article.subtitle %>" required>
-  </div>
-
-  <div class="">
-    <label for="image"></label>
-    <input type="text" id="image" name="image" value="<%= article.image %>" >
-  </div>
-
-  <div class="">
-    <label for="text"></label>
-    <textarea id="text" name="text"><%= article.text %></textarea>
-  </div>
-
-  <div class="">
-    <label for="blockQuote"></label>
-    <input type="text" id="blockQuote" name="blockQuote" value="<%= article.blockQuote %>">
-  </div>
-
-  <div class="">
-    <label for="readingTime"></label>
-    <input type="number" min="1" max="60" id="readingTime" name="readingTime" value="<%= article.readingTime %>" required>
-  </div>
-
-  <div class="">
-    <input type="radio" id="published" name="published" value="true"> Published<br>
-    <input type="radio" id="published" name="published" value="false"> Unpublished<br>
-  </div>
-
-  <button name="button">Submit</button>
-
-</form>
+</section>
