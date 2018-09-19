@@ -1,14 +1,38 @@
-<h1>User profile Page</h1>
 
 
 
-<% locals.users.forEach(user => { %>
+<section class="section">
+  <div class="container">
+    <h1 class="title is-h1">All users</h1>
 
-    <div class="">
-      <a href="/users/<%= user._id %>">
-        <h4>Name: <%= user.name %></h4>
-        <h5>Email: <%= user.email %></h5>
-        <p>Admin: <%= user.admin %></p>
-      </a>
-    </div>
-<% }) %>
+    <% locals.users.forEach(user => { %>
+
+
+        <div class="media">
+          <div class="media-left">
+            <div>
+              <h4>Name: <strong><%= user.name %></strong></h4>
+              <p>Email: <strong><%= user.email %></strong></p>
+              <p>Admin: <strong><%= user.admin %></strong></p>
+            </div>
+
+            <a class="button is-text all-users-edit-button" href="/users/<%= user._id %>/edit">Edit account</a>
+          </div>
+
+          <div class="media-content">
+          </div>
+
+          <div class="media-right">
+
+
+            <form class="" action="/users/<%= user._id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="button is-danger" name="button">Remove account</button>
+            </form>
+          </div>
+        </div>
+
+    <% }) %>
+  </div>
+
+</section>

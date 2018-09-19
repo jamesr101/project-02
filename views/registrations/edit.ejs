@@ -29,7 +29,7 @@
         </div>
       </div>
 
-      <div class="field">
+      <%# <div class="field">
         <label class="label" for="password">Password</label>
         <div class="control">
           <input class="input" type="password" id="password" name="password" placeholder="Password">
@@ -41,7 +41,7 @@
         <div class="control">
           <input class="input" type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirm password">
         </div>
-      </div>
+      </div> %>
 
       <% if (locals.isAuthenticated && locals.currentUser.admin) { %>
         <div class="">

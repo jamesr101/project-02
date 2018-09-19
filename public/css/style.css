@@ -64,3 +64,10 @@ h5.author-name.title {
 .account-pic .is-square {
   padding-top: 0;
 }
+
+.button.is-text.all-users-edit-button {
+  /* background-color: red; */
+  padding-left: 0;
+  margin-left: 0;
+
+}
