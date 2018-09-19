@@ -1,49 +1,60 @@
-<h1>New Article Page</h1>
 
-<form class="" action="/articles" method="post">
-
-  <div class="">
-    <label for="title"></label>
-    <input type="text" id="title" name="title" placeholder="Title" required>
-  </div>
-
-  <div class="">
-    <label for="subtitle"></label>
-    <input type="text" id="subtitle" name="subtitle" placeholder="Subtitle" required>
-  </div>
-
-  <div class="">
-    <label for="image"></label>
-    <input type="text" id="image" name="image" placeholder="image URL">
-  </div>
-
-  <div class="">
-    <label for="text"></label>
-    <textarea name="text" required></textarea>
-    <%# <input type="text" id="text" name="text" placeholder="Write article here"> %>
-  </div>
-
-  <%# <div class="">
-    <label for="author"></label>
-    <input type="text" id="author" name="author" placeholder="Author Name">
-  </div> %>
-
-  <div class="">
-    <label for="blockQuote"></label>
-    <input type="text" id="blockQuote" name="blockQuote" placeholder="Block Quote">
-  </div>
-
-  <div class="">
-    <label for="readingTime"></label>
-    <input type="number" id="readingTime" name="readingTime" placeholder="Reading Time" min="1" max="60" required>
-  </div>
-
-  <div class="">
-    <label for="published">Publish Article</label>
-    <input type="checkbox" id="published" name="published" value="true">
-  </div>
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2">Create a new article</h2>
+    <form class="" action="/articles" method="post">
 
 
-  <button name="button">Submit</button>
+      <div class="field">
+        <label for="title">Title</label>
+        <div class="control">
+          <input class="input is-large" type="text" id="title" name="title" placeholder="Title" required>
+        </div>
+      </div>
 
-</form>
+      <div class="field">
+        <label for="subtitle">Subtitle</label>
+        <div class="control">
+          <input class="input is-medium" type="text" id="subtitle" name="subtitle" placeholder="Subtitle" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="image">Image link</label>
+        <div class="control">
+          <input class="input" type="text" id="image" name="image" placeholder="image URL">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="text">Copy</label>
+        <div class="control">
+          <textarea class="textarea" name="text" placeholder="Copy" rows="15" required></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="blockQuote">Block quote</label>
+        <div class="control">
+          <input class="input" type="text" id="blockQuote" name="blockQuote" placeholder="Block Quote">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="readingTime">Reading time</label>
+        <div class="control">
+          <input class="input" type="number" id="readingTime" name="readingTime" placeholder="Reading Time" min="1" max="60" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <input class="checkbox" type="checkbox" id="published" name="published" value="true">
+          <label for="published">Publish article</label>
+        </div>
+      </div>
+
+
+      <button class="button is-primary" name="button">Submit</button>
+
+    </form>
