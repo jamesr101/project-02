@@ -36,11 +36,16 @@
 
       <% if ((locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
 
-        <a href="/articles/<%= article._id %>/edit">Edit article</a>
-        <form class="" action="/articles/<%= article._id %>" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <button name="button">Remove article</button>
-        </form>
+        <div class="level article-buttons">
+
+          <a href="/articles/<%= article._id %>/edit" class="button is-link">Edit article</a>
+          <form class="" action="/articles/<%= article._id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="button is-danger" name="button">Remove article</button>
+          </form>
+
+        </div>
+
       <% } %>
 
       <div class="comments">

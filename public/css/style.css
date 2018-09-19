@@ -54,5 +54,9 @@ h5.author-name.title {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+}
 
+.article-buttons {
+  padding-top: 20px;
+  margin: 5px;
 }
