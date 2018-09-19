@@ -3,10 +3,11 @@
   <div class="container">
     <h2 class="title is-2">My Account</h2>
 
-    <figure class="image is-128x128">
-      <img class="is-rounded" src="<%= locals.currentUser.profileImage %>">
-    </figure>
-
+    <div class="account-pic level-item">
+      <p class="image is-square is-128x128">
+        <img class="is-rounded" src="<%= locals.currentUser.profileImageSRC %>">
+      </p>
+    </div>
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
@@ -49,13 +50,14 @@
 
     <% if (locals.isAuthenticated && (locals.currentUser._id.equals(user._id) || locals.currentUser.admin)) { %>
 
-      <div class="field is-horizontal">
-        <a class="button is-primary" href="/users/<%= user._id %>/edit">Edit account</a>
-        <form class="" action="/users/<%= user._id %>" method="post">
-          <input type="hidden" name="_method" value="DELETE">
-          <button class="button is-danger" name="button">Remove account</button>
-        </form>
+      <div class="level">
+      <a class="button is-primary" href="/users/<%= user._id %>/edit">Edit account</a>
+      <form class="" action="/users/<%= user._id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="button is-danger" name="button">Remove account</button>
+      </form>
       </div>
+
     <% } %>
 
 
@@ -77,25 +79,6 @@
                   <%= article.subtitle %>
                 </p>
               </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <a class="level-item" aria-label="reply">
-                    <span class="icon is-small">
-                      <i class="fas fa-reply" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                  <a class="level-item" aria-label="retweet">
-                    <span class="icon is-small">
-                      <i class="fas fa-retweet" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                  <a class="level-item" aria-label="like">
-                    <span class="icon is-small">
-                      <i class="fas fa-heart" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                </div>
-              </nav>
             </div>
           </article>
         </div>

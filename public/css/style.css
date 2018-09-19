@@ -60,3 +60,7 @@ h5.author-name.title {
   padding-top: 20px;
   margin: 5px;
 }
+
+.account-pic .is-square {
+  padding-top: 0;
+}
