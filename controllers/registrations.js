@@ -15,8 +15,18 @@ function newRoute(req, res) {
 
 function createRoute(req, res) {
   User.create(req.body, () => {
-    req.flash('info', 'Your account has been created');
-    res.redirect('/login');
+
+
+    User.findOne({email: req.body.email }, (err, user) => {
+
+      req.session.userId = user._id;
+
+      req.flash('info', 'Your account has been created');
+      res.redirect('/');
+
+    });
+
+
   });
 }
 
@@ -53,10 +63,17 @@ function updateRoute(req, res) {
 function deleteRoute(req, res) {
   User.findById(req.params.id, (err, user) => {
     user.remove(() => {
-      req.session.regenerate(() => {
-        req.flash('info', 'Your account has been successfully deleted');
-        return res.redirect('/articles');
-      });
+
+      if (res.locals.currentUser){
+        req.flash('info', 'Account has been successfully deleted');
+        return res.redirect('/users');
+      } else {
+        req.session.regenerate(() => {
+          req.flash('info', 'Your account has been successfully deleted');
+          return res.redirect('/articles');
+        });
+      }
+
     });
   });
 }
