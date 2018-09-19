@@ -5,6 +5,7 @@
     <title>Blog Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body>
 
@@ -14,14 +15,14 @@
           <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
         </a>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
 
-      <div class="navbar-menu">
+      <div class="navbar-menu" id="navMenu">
         <div class="navbar-start">
           <a class="navbar-item" href="/articles">
             Articles
@@ -45,10 +46,20 @@
         </div>
 
 
-
-
       </div>
+
+
+
+
+
+
+
+
+    
     </nav>
+
+
+
 
     <form method="GET" action="/articles">
       <div class="field has-addons">

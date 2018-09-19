@@ -50,8 +50,17 @@ function updateRoute(req, res) {
   User.findById(req.params.id, (err, user) => {
     user.set(req.body);
     user.save(() => {
-      req.flash('info', 'Your account has been updated');
-      res.redirect(`/users/${req.params.id}`);
+
+      if (res.locals.currentUser.admin){
+        req.flash('info', 'Account has been updated');
+        return res.redirect('/users');
+      } else {
+        req.flash('info', 'Your account has been updated');
+        res.redirect(`/users/${req.params.id}`);
+        
+      }
+
+
     });
 
   });
@@ -64,7 +73,7 @@ function deleteRoute(req, res) {
   User.findById(req.params.id, (err, user) => {
     user.remove(() => {
 
-      if (res.locals.currentUser){
+      if (res.locals.currentUser.admin){
         req.flash('info', 'Account has been successfully deleted');
         return res.redirect('/users');
       } else {

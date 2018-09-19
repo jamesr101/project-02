@@ -76,3 +76,8 @@ div.admin-toggle {
   background-color: pink;
   padding: 4px;
 }
+
+div#navMenu {
+  position: absolute;
+  width: 100%;
+}
