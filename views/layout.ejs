@@ -10,6 +10,7 @@
   <body>
 
     <nav class="navbar" role="navigation" aria-label="main navigation">
+
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
@@ -45,34 +46,21 @@
           <% } %>
         </div>
 
-
       </div>
 
-
-
-
-
-
-
-
-    
     </nav>
 
 
 
+    <section class="section">
 
-    <form method="GET" action="/articles">
-      <div class="field has-addons">
-        <!-- <div class="control is-rounded"> -->
-          <input class="input is-rounded is-large" name="search" type="text" placeholder="Search" value="<%= locals.search %>">
-        <!-- </div> -->
+        <form method="GET" action="/articles">
+          <div class="field has-addons container">
+            <input class="input is-rounded is-large" name="search" type="text" placeholder="Search" value="<%= locals.search %>">
+          </div>
+        </form>
 
-      </div>
-    </form>
-
-
-
-    <h1>LAYOUT PAGE</h1>
+    </section>
 
     <% for (const type in messages) { %>
     <p class="notification <%= type %>"><%= messages[type] %></p>
