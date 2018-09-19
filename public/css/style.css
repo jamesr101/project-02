@@ -71,3 +71,8 @@ h5.author-name.title {
   margin-left: 0;
 
 }
+
+div.admin-toggle {
+  background-color: pink;
+  padding: 4px;
+}

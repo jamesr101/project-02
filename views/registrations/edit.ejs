@@ -44,11 +44,20 @@
       </div> %>
 
       <% if (locals.isAuthenticated && locals.currentUser.admin) { %>
-        <div class="">
-        <label for="admin"></label>
-        <input type="radio" id="admin" name="admin" value="true"> Admin<br>
-        <input type="radio" id="admin" name="admin" value="false"> non-Admin<br>
+
+        <div class="field admin-toggle">
+          <div class="control">
+            <label class="radio">
+              <input type="radio" name="admin" value="true" checked>
+              Admin
+            </label>
+            <label class="radio">
+              <input type="radio" name="admin" value="false"<% if (user.admin === false) { %> checked<% } %>>
+              non-Admin
+            </label>
+          </div>
         </div>
+
       <% } %>
 
 
