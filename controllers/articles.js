@@ -105,7 +105,7 @@ function deleteCommentRoute(req, res) {
     const comment = article.comments.id(req.params.commentId);
 
 
-    if(!req.currentUser._id.equals(comment.user)) {
+    if(!req.currentUser._id.equals(comment.user) && !req.currentUser.admin) {
       req.flash('danger', 'You do not have the authorisation');
       return res.redirect(`/articles/${req.params.id}`);
     }

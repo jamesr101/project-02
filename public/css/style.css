@@ -2,3 +2,37 @@ div.unpublished {
   background-color: lightgrey;
 
 }
+
+
+div.showArticle.container{
+  max-width: 800px;
+}
+
+p.blockQuote{
+  font-style: italic;
+}
+
+.comment {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px lightgrey solid;
+  border-radius: 2px;
+}
+
+.moderate-panel {
+  background-color: pink;
+  padding: 5px;
+}
+
+
+.has-been-moderated {
+  background-color: skyblue;
+}
+
+label.checkbox {
+  padding-right: 10px;
+}
+
+img {
+  object-fit: cover;
+}

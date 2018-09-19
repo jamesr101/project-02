@@ -30,8 +30,11 @@ function showRoute(req, res) {
 
 
 function deleteRoute(req, res) {
+  req.session.regenerate(() => {
 
-  req.session.regenerate(() => res.redirect('/'));
+    req.flash('info', 'You have been logged out');
+    res.redirect('/');
+  });
 }
 
 module.exports = {

@@ -1,18 +1,25 @@
 <h1>Show page</h1>
 
 <div class="section">
-  <div class="container">
+  <div class="showArticle container">
 
 
     <div class="">
-      <img src="<%= article.image %>" alt="">
+
+      <div class="">
+        <img class="image" src="<%= article.user.image %>" alt="">
+        <h5><%= article.user.name %></h5>
+        <p><%= article.readingTime %> min read</p>
+      </div>
+
+      <img class="image" src="<%= article.image %>" alt="">
+
       <h2 class="title is-2"><%= article.title %></h2>
-      <h5>Written by <%= article.user.name %></h5>
-      <h5><%= article.subtitle %></h5>
-      <p><%= article.readingTime %> min read</p>
+      <h5 class="subtitle is-2 has-text-grey"><%= article.subtitle %></h5>
 
+      <p class="blockQuote title is-3 has-text-centered is-italic">"<%= article.blockQuote %>"</p>
 
-      <p><%- article.textHTML %> THE END</p>
+      <p class="is-size-5 content"><%- article.textHTML %></p>
 
 
       <p>Published: <%= article.published %></p>
@@ -20,40 +27,104 @@
       <div class="comments">
         <% article.comments.forEach( comment => { %>
 
+
+
+
+
+
+
           <% if (comment.moderated || (locals.isAuthenticated && locals.currentUser.admin)){ %>
-            <p><%= comment.user.name %></p>
-            <p><%= comment.content %> | Moderated = <%= comment.moderated %></p>
+            <div class="comment">
 
-            <% if(locals.isAuthenticated && locals.currentUser.admin) { %>
-              <form class="" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
-                <input type="hidden" name="_method" value="PUT">
-                <label class="monderated">Monderated</label>
-                <input type="checkbox" id="monderated" name="moderated" value="true"<% if(comment.moderated) { %> checked<% } %>/>
+              <% if(locals.isAuthenticated && locals.currentUser.admin) { %>
+                <div class="level moderate-panel<% if(comment.moderated) { %> has-been-moderated<% } %>">
 
-                <button>Submit moderation</button>
-              </form>
-            <% } %>
+                  <div class="level-left"></div>
 
-            <% if (locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
+                  <div class="level-right">
+                    <form class="level-item" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
+                      <input type="hidden" name="_method" value="PUT">
 
-              <form class="" action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
-                <input type="hidden" name="_method" value="DELETE">
-                <button name="button">Delete</button>
-              </form>
+                        <label class="checkbox">
+                          <input type="checkbox" name="moderated" value="true"<% if(comment.moderated) { %> checked<% } %>/>
+                          Moderate
+                        </label>
 
-            <% } %>
+                      <button class="button is-danger">Submit moderation</button>
+                    </form>
+                  </div>
 
+                </div>
+              <% } %>
+
+
+              <article class="media">
+
+                <figure class="media-left">
+                  <p class="image is-64x64 is-square">
+                    <img class="is-rounded" src="<%= comment.user.profileImage %>">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong><%= comment.user.name %></strong> <small></small>
+                      <br>
+                      <%= comment.content %>
+                    </p>
+                  </div>
+                </div>
+
+
+
+
+
+                <% if (locals.isAuthenticated && (comment.user && locals.currentUser._id.equals(comment.user._id) || locals.currentUser.admin)) { %>
+
+                  <div class="media is-left">
+                    <form action="/articles/<%= article._id %>/comments/<%= comment._id %>" method="post">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button class="delete"></button>
+                    </form>
+                  </div>
+
+                <% } %>
+
+              </article>
+
+            </div>
           <% } %>
 
         <% }); %>
       </div>
 
+      <article class="comment media">
+        <figure class="media-left">
+          <p class="image is-64x64 is-square">
+            <img class="is-rounded" src="<% if (locals.isAuthenticated){ %><%= locals.currentUser.profileImage %><% } %>">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="field">
+            <form class="" action="/articles/<%= article._id %>/comments" method="post">
+              <p class="control">
 
-      <form class="" action="/articles/<%= article._id %>/comments" method="post">
-        <label class="comment">Comment</label>
-        <input type="text" id="comment" name="content" placeholder="Comment (max 280 characters)" required/>
-        <button>Submit comment</button>
-      </form>
+
+                <textarea class="textarea" name="content" placeholder="Comment (max 280 characters)" required></textarea>
+              </p>
+            </div>
+            <nav class="level">
+              <div class="level-left">
+                <div class="level-item">
+                  <button class="button is-info">Submit</button>
+                </div>
+              </div>
+              <div class="level-left">
+
+              </div>
+            </nav>
+          </form>
+        </div>
 
 
       <% if ((locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
