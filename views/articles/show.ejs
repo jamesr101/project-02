@@ -6,10 +6,20 @@
 
     <div class="">
 
-      <div class="">
-        <img class="image" src="<%= article.user.image %>" alt="">
-        <h5><%= article.user.name %></h5>
-        <p><%= article.readingTime %> min read</p>
+
+      <div class="author-profile">
+
+        <figure class="media">
+          <p class="image is-64x64 is-square">
+            <img class="is-rounded " src="<%= article.user.profileImageSRC %>">
+          </p>
+        </figure>
+
+        <div class="author-details">
+          <h5 class="title is-5 author-name"><%= article.user.name %></h5>
+          <p><%= article.readingTime %> min read</p>
+        </div>
+
       </div>
 
       <img class="image" src="<%= article.image %>" alt="">
@@ -42,8 +52,21 @@
 
 
 
-          <% if (comment.moderated || (locals.isAuthenticated && locals.currentUser.admin)){ %>
+          <% if (comment.moderated || (locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id))){ %>
             <div class="comment">
+
+            <% if(locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id) && !comment.moderated && !locals.currentUser.admin) { %>
+              <div class="level moderate-panel<% if(comment.moderated) { %> has-been-moderated<% } %>">
+
+                <div class="level-left">
+                  <p><strong>Awaiting moderation</strong></p>
+                </div>
+
+                <div class="level-right"></div>
+
+              </div>
+            <% } %>
+
 
               <% if(locals.isAuthenticated && locals.currentUser.admin) { %>
                 <div class="level moderate-panel<% if(comment.moderated) { %> has-been-moderated<% } %>">
@@ -110,7 +133,7 @@
       <article class="comment media">
         <figure class="media-left">
           <p class="image is-64x64 is-square">
-            <img class="is-rounded" src="<% if (locals.isAuthenticated){ %><%= locals.currentUser.profileImageSRC %><% } %>">
+            <img class="is-rounded" src="<% if (locals.isAuthenticated){ %><%= locals.currentUser.profileImageSRC %><% } else { %>https://startupsclub.com/image/user-default.png<% }%>">
           </p>
         </figure>
         <div class="media-content">
@@ -119,13 +142,13 @@
               <p class="control">
 
 
-                <textarea class="textarea" name="content" placeholder="Comment (max 280 characters)" required></textarea>
+                <textarea class="textarea" name="content" placeholder="Comment (max 280 characters)" required<% if (!locals.isAuthenticated){ %> disabled<% }%>></textarea>
               </p>
             </div>
             <nav class="level">
               <div class="level-left">
                 <div class="level-item">
-                  <button class="button is-info">Submit</button>
+                  <button class="button is-info"><% if (locals.isAuthenticated){ %>Submit<% } else { %>Sign in<% } %></button>
                 </div>
               </div>
               <div class="level-left">

@@ -36,3 +36,23 @@ label.checkbox {
 img {
   object-fit: cover;
 }
+
+.author-profile {
+  display: flex;
+}
+
+.author-profile > * {
+  margin: 10px;
+}
+
+h5.author-name.title {
+  /* background-color: red; */
+  margin: 0;
+}
+
+.author-details {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+
+}
