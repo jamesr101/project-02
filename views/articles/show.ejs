@@ -96,13 +96,13 @@
 
                 <figure class="media-left">
                   <p class="image is-64x64 is-square">
-                    <img class="is-rounded" src="<%= comment.user.profileImageSRC %>">
+                    <img class="is-rounded" src="<%= comment.user ? comment.user.profileImageSRC : 'https://startupsclub.com/image/user-default.png' %>">
                   </p>
                 </figure>
                 <div class="media-content">
                   <div class="content">
                     <p>
-                      <strong><%= comment.user.name %></strong> <small></small>
+                      <strong><%= comment.user ? comment.user.name : 'Account deleted' %></strong> <small></small>
                       <br>
                       <%= comment.content %>
                     </p>

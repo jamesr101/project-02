@@ -45,6 +45,7 @@ userSchema.pre('save', function hashPassword(next) {
 
 userSchema.pre('remove', function removeUserArticles(next) {
   this.model('Article').remove({ user: this._id }, next);
+  // also for each article, remove comments which are by this user;
 });
 
 

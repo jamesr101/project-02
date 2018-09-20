@@ -15,10 +15,18 @@ p.blockQuote{
 .comment {
   margin: 15px 0;
   padding: 10px;
-  border: 1px lightgrey solid;
-  border-radius: 2px;
+  /* border: 1px lightgrey solid; */
+  border-radius: 6px;
+  background-color: #FBE9C9;
 }
 
+.box {
+  background-color: #F2F8D1;
+}
+
+.box:hover{
+  background-color: #E8F2AD;
+}
 .moderate-panel {
   background-color: pink;
   padding: 5px;
