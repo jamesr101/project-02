@@ -5,6 +5,7 @@
     <title>Blog Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900" rel="stylesheet">
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body>
@@ -12,8 +13,9 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
 
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+
+        <a class="navbar-item" href="/articles">
+          <h1 class="brand-title">Blog...</h1>
         </a>
 
         <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
@@ -24,11 +26,8 @@
       </div>
 
       <div class="navbar-menu" id="navMenu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="/articles">
-            Articles
-          </a>
-        </div>
+
+
 
         <div class="navbar-end">
           <% if (locals.isAuthenticated && locals.currentUser.admin) { %>

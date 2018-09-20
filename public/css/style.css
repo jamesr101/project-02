@@ -81,3 +81,11 @@ div#navMenu {
   position: absolute;
   width: 100%;
 }
+
+.brand-title {
+  font-family: 'Merriweather', serif;
+  font-weight: 900;
+  font-size: 40px;
+  color: black;
+
+}
