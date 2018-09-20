@@ -13,7 +13,7 @@
             <div>
               <h4>Name: <strong><%= user.name %></strong></h4>
               <p>Email: <strong><%= user.email %></strong></p>
-              <p>Admin: <strong><%= user.admin %></strong></p>
+              <p>Type: <strong><% if (user.admin) { %>Admin<% } else { %>User<% } %></strong></p>
             </div>
 
             <a class="button is-text all-users-edit-button" href="/users/<%= user._id %>/edit">Edit account</a>
