@@ -85,10 +85,28 @@ div.admin-toggle {
   padding: 4px;
 }
 
-div#navMenu {
+/* div#navMenu {
+    height: 85px;
+} */
+
+.navbar-menu  {
+
+    height: 85px;
+}
+
+.navbar-burger {
+
+    height: 85px;
+    width: 85px;
+}
+
+.navbar-menu.is-active {
   position: absolute;
   width: 100%;
+
 }
+
+
 
 .brand-title {
   font-family: 'Merriweather', serif;

@@ -6,12 +6,13 @@ function indexRoute(req, res) {
   const queryTitle = {};
   const querySubtitle = {};
   const queryBlockQuote = {};
+  const queryText = {};
   if(req.query.search) {
-    queryBlockQuote.blockQuote = queryTitle.title = querySubtitle.subtitle = new RegExp(req.query.search, 'i');
+    queryText.text = queryBlockQuote.blockQuote = queryTitle.title = querySubtitle.subtitle = new RegExp(req.query.search, 'i');
   }
 
 
-  Article.find(  {$or: [ queryTitle, querySubtitle, queryBlockQuote ] }).sort({title: 1 })
+  Article.find(  {$or: [ queryText, queryTitle, querySubtitle, queryBlockQuote ] }).sort({title: 1 })
     .populate('user')
     .exec((err, articles) => {
       console.log(err);
