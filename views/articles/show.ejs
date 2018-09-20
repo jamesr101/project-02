@@ -95,7 +95,10 @@
               <article class="media">
 
                 <figure class="media-left">
-                  <p class="image is-64x64 is-square">
+                  <p class="image is-64x64 is-square is-hidden-mobile">
+                    <img class="is-rounded" src="<%= comment.user ? comment.user.profileImageSRC : 'https://startupsclub.com/image/user-default.png' %>">
+                  </p>
+                  <p class="image is-32x32 is-square is-hidden-tablet">
                     <img class="is-rounded" src="<%= comment.user ? comment.user.profileImageSRC : 'https://startupsclub.com/image/user-default.png' %>">
                   </p>
                 </figure>
@@ -134,7 +137,10 @@
 
       <article class="comment media">
         <figure class="media-left">
-          <p class="image is-64x64 is-square">
+          <p class="image is-32x32 is-square is-hidden-tablet">
+            <img class="is-rounded" src="<% if (locals.isAuthenticated){ %><%= locals.currentUser.profileImageSRC %><% } else { %>https://startupsclub.com/image/user-default.png<% }%>">
+          </p>
+          <p class="image is-64x64 is-square is-hidden-mobile">
             <img class="is-rounded" src="<% if (locals.isAuthenticated){ %><%= locals.currentUser.profileImageSRC %><% } else { %>https://startupsclub.com/image/user-default.png<% }%>">
           </p>
         </figure>
