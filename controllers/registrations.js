@@ -57,7 +57,7 @@ function updateRoute(req, res) {
       } else {
         req.flash('info', 'Your account has been updated');
         res.redirect(`/users/${req.params.id}`);
-        
+
       }
 
 
