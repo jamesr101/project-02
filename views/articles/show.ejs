@@ -28,7 +28,7 @@
 
       <p class="blockQuote title is-3 has-text-centered is-italic">"<%= article.blockQuote %>"</p>
 
-      <p class="is-size-5 content"><%- article.textHTML %></p>
+      <div class="is-size-5 content"><%- article.textHTML %></div>
 
 
       <% if ((locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && article.user && locals.currentUser._id.equals(article.user._id)) ){ %>
