@@ -35,7 +35,7 @@ router.post('/articles/:id/comments', secureRoute, articlesController.createComm
 router.delete('/articles/:id/comments/:commentId', secureRoute, articlesController.deleteComment);
 router.put('/articles/:id/comments/:commentId', secureRoute, articlesController.updateComment);
 
-router.get('/users/', secureRoute, adminRoute, registrationsController.index);
+router.get('/users', secureRoute, adminRoute, registrationsController.index);
 router.get('/users/:id', secureRoute, registrationsController.show);
 
 router.get('/users/:id/edit', secureRoute, registrationsController.edit);
