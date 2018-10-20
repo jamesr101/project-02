@@ -14,7 +14,7 @@
 
 
 ## My Application - 'Blog...'
-![Blog logo title](https://user-images.githubusercontent.com/40343797/45220826-6777ff00-b2a7-11e8-8511-8a5f00bc0b74.png)
+![blog title logo](https://user-images.githubusercontent.com/40343797/47254377-8bf3f900-d459-11e8-98c5-c504c5c46e4a.png)
 
 ### App overview
 Blog... is a simple blogging platform which offers moderated commenting, admin users, searching and saving of draft articles.
@@ -30,47 +30,46 @@ Admin users have increased privileges. Admin users can view and delete any user 
 ### Responsiveness and design
 This app was created with the Bulma framework and is fully functioning on all screen sizes.
 
-![Desktop and mobile view](https://user-images.githubusercontent.com/40343797/45220826-6777ff00-b2a7-11e8-8511-8a5f00bc0b74.png)
+<img width="242" alt="Article Show Page Mobile" src="https://user-images.githubusercontent.com/40343797/47254380-98785180-d459-11e8-954e-1f4a0c8f3695.png">
+
 
 
 ### Instructions
 1. All published articles can be seen from the **Articles Page** ('/articles') which can be reached by clicking on the 'Blog...' during any point of the user journey.
 
-![Articles page](https://user-images.githubusercontent.com/40343797/45220826-6777ff00-b2a7-11e8-8511-8a5f00bc0b74.png)
+   ![articles index page](https://user-images.githubusercontent.com/40343797/47254393-c8275980-d459-11e8-92d4-8f6c33d463d9.png)
 
-The **Articles Page** is populated by panels representing each published article. The Articles Page will also show the results of searching using the search bar, also shown throughout the user journey. A search will return any articles which contain the search term within an article's *Title*, *Subtitle*, *Block Quote* or *Copy*. Clicking on any article panel will take you to the **Article Show Page**.
+   The **Articles Page** is populated by panels representing each published article. The Articles Page will also show the results of searching using the search bar, also shown throughout the user journey. A search will return any articles which contain the search term within an article's *Title*, *Subtitle*, *Block Quote* or *Copy*. Clicking on any article panel will take you to the **Article Show Page**.
 
 2. The **Article Show Page** will display the full article contents including the author's name and profile image. The author of the article or any admin user will also be shown an *'Edit article'* and *'Delete article'* button.
 
-![Show Article page](https://user-images.githubusercontent.com/40343797/45220826-6777ff00-b2a7-11e8-8511-8a5f00bc0b74.png)
-![Show Article page - Admin or Author view](https://user-images.githubusercontent.com/40343797/45220826-6777ff00-b2a7-11e8-8511-8a5f00bc0b74.png)
+   <img src="https://user-images.githubusercontent.com/40343797/47254402-ec833600-d459-11e8-81e0-8547235cc03a.png" alt="article show page signed in annotated" width="450"/>
 
 3. Users who are not signed-in will only see comments which have been modified. Users who are not signed-in can not leave comments and will be shown a *'Sign in'* button.
 
-![Comments - non-signed-in user view](https://user-images.githubusercontent.com/40343797/45220826-6777ff00-b2a7-11e8-8511-8a5f00bc0b74.png)
+   ![comments not signed in annotated](https://user-images.githubusercontent.com/40343797/47254407-0755aa80-d45a-11e8-8edd-886347d80128.png)
 
-A signed-in user will be able to leave comments on an **Article Show Page**. They will also be able to delete any previous comment they have made. Once a comment has be left, it will appear with a banner *'awaiting moderation'*. Comments awaiting moderation are only visible to the comment author or to admin users.
+   A signed-in user will be able to leave comments on an **Article Show Page**. They will also be able to delete any previous comment they have made. Once a comment has be left, it will appear with a banner *'awaiting moderation'*. Comments awaiting moderation are only visible to the comment author or to admin users.
 
-![Comments - signed-in user view](https://user-images.githubusercontent.com/40343797/45220826-6777ff00-b2a7-11e8-8511-8a5f00bc0b74.png)
+   ![awaiting moderation annotated](https://user-images.githubusercontent.com/40343797/47254416-22c0b580-d45a-11e8-9af3-21c15f8ca544.png)
 
-An admin users can view and delete all comments. All comments appear with a banner showing whether they have been moderated or not. Comments can be moderated (to be visible to all users) or unmoderated (to be visible only to admins and the comment author) using the check box.
+   An admin users can view and delete all comments. All comments appear with a banner showing whether they have been moderated or not. Comments can be moderated (to be visible to all users) or unmoderated (to be visible only to admins and the comment author) using the check box.
 
-![Comments - Admin user view](https://user-images.githubusercontent.com/40343797/45220826-6777ff00-b2a7-11e8-8511-8a5f00bc0b74.png)
-
+   ![comments admin view](https://user-images.githubusercontent.com/40343797/47254421-3bc96680-d45a-11e8-8353-63f8aade3cdb.png)
 
 4. Signed in users can add new articles using the *'Add an article'* button in the nav bar. If the *'published'* checkbox is selected, the article will be visible to all users. If the *'unpublished'* checkbox is selected, the article will only be visible to the author and will only appear in their **My Account** page.
 
-![Add an article](https://user-images.githubusercontent.com/40343797/45220908-b4f46c00-b2a7-11e8-9460-2a4dee40d0ae.png)
+   The **Edit article** page is similar to the *'Add an article'* but the form will be pre-filled with the article content.
 
-The **Edit article** page is similar to the *'Add an article'* but the form will be pre-filled with the article content.
-
-![Edit an article](https://user-images.githubusercontent.com/40343797/45220908-b4f46c00-b2a7-11e8-9460-2a4dee40d0ae.png)
+   ![edit article page](https://user-images.githubusercontent.com/40343797/47254425-4f74cd00-d45a-11e8-9ee3-e878f1b88025.png)
 
 5. Signed-in users will see a link in the nav bar to **My Account**. This page shows the user their account details and will show all their published and unpublished articles. Unpublished articles will appear as grey. Account holders can edit or delete their account. Account deletion will also remove all articles with have been written by that user.
 
-![My account page](https://user-images.githubusercontent.com/40343797/45221008-04d33300-b2a8-11e8-999e-62b50286c8ec.png)
+   ![account page](https://user-images.githubusercontent.com/40343797/47254428-5e5b7f80-d45a-11e8-9988-1c33d58dfe5b.png)
 
-Admin users are also given the link **All Users**. This page will show details of all user accounts. Any account can be removed or edited by an admin user. On a **Show Account Page**, an admin user will also be shown the option to make that account an admin or a non-admin.
+   Admin users are also given the link **All Users**. This page will show details of all user accounts. Any account can be removed or edited by an admin user. On a **Show Account Page**, an admin user will also be shown the option to make that account an admin or a non-admin.
+
+   ![admin user index page](https://user-images.githubusercontent.com/40343797/47254894-d24c5680-d45f-11e8-8fc5-88f88742b04b.png)
 
 ## Process
 
