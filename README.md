@@ -55,7 +55,7 @@ This app was created with the Bulma framework and is fully functioning on all sc
 
    An admin users can view and delete all comments. All comments appear with a banner showing whether they have been moderated or not. Comments can be moderated (to be visible to all users) or unmoderated (to be visible only to admins and the comment author) using the check box.
 
-   ![comments admin view](https://user-images.githubusercontent.com/40343797/47254421-3bc96680-d45a-11e8-8353-63f8aade3cdb.png)
+   ![comments admin view](https://user-images.githubusercontent.com/40343797/47313003-b5697c00-d635-11e8-888f-1cc416cd7ece.png)
 
 4. Signed in users can add new articles using the *'Add an article'* button in the nav bar. If the *'published'* checkbox is selected, the article will be visible to all users. If the *'unpublished'* checkbox is selected, the article will only be visible to the author and will only appear in their **My Account** page.
 
