@@ -3,26 +3,29 @@
 
 ## Goal: to build a full-stack RESTful application that includes user authentication.
 
+### Timeframe
+5 days
+
 ## Technologies used
 
-* HTML5 / CSS / Javascript (ES6)
-* git
+* JavaScript (ES6) / HTML5 / CSS
 * Express & EJS
 * MongoDB & Mongoose
 * BCrypt & Session Auth
+* git / gitHub
 * Bulma
 
 
 ## My Application - 'Blog...'
 ![blog title logo](https://user-images.githubusercontent.com/40343797/47254377-8bf3f900-d459-11e8-98c5-c504c5c46e4a.png)
-
+A live version of this site can be found on Heroku ----> [Wdi-express-blog.herokuapp.com](https://wdi-express-blog.herokuapp.com/articles)
 ### App overview
 Blog... is a simple blogging platform which offers moderated commenting, admin users, searching and saving of draft articles.
 
 This application allows users to read and publish blog posts. Users can read published articles and view moderated comments. Users can create an account and sign-in with their password and email address. Signed-in users can create and publish their own articles/posts. Signed-in can leave comments on articles. Users can remove their own comments and edit, un-publish or delete their own articles. Signed in users can delete their accounts. When a user deletes their account, any articles, published or unpublished, will also be removed, any comments left on other articles will become anonymous.
 
 ##### Publishing Articles
-Unpublished articles can only be viewed by their author from their account. A signed-in user can view all their published and unpublished from their **My Account** page. Articles can be published or unpublished at any point. Articles can be written with Markdown formatting.
+Unpublished articles can only be viewed by their author from their account. A signed-in user can view all their published and unpublished articles from their **My Account** page. Articles can be published or unpublished at any point. Articles can be written with Markdown formatting.
 
 ##### Admin Users
 Admin users have increased privileges. Admin users can view and delete any user account. They can also view, edit and delete other user's accounts. Admin users can give admin rights to other users. Unmoderated comments are only visible to their author or to admin users. An admin user must moderate a comment before it becomes visible to any other user.
