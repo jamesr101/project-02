@@ -48,15 +48,11 @@
       <div class="comments">
         <% article.comments.forEach( comment => { %>
 
-
-
-
-
-
-
+          // only shows a comment if it has been moderated, or if the current user is an Admin, or if the current user is the author of the comment
           <% if (comment.moderated || (locals.isAuthenticated && locals.currentUser.admin) || (locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id))){ %>
             <div class="comment">
 
+            // shows whether or not a comment has been moderated, only shows this to the author of the comment
             <% if(locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id) && !comment.moderated && !locals.currentUser.admin) { %>
               <div class="level moderate-panel<% if(comment.moderated) { %> has-been-moderated<% } %>">
 

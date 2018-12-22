@@ -94,6 +94,12 @@ Another complicated feature was removing all articles written by a particular us
 
 I am really pleased with how the comments functionality worked, especially how comments must be moderated by admins before they are publicly visible. I also like the way a user's profile image will automatically appear in the new comment model when a user is signed in.
 
+<img width="1134" alt="screenshot 2018-12-22 at 21 58 06" src="https://user-images.githubusercontent.com/40343797/50378931-b8341d80-0634-11e9-871f-2138750b6bea.png">
+The code above only shows comments if they have been moderated, or if the current user is an admin or the current user is the author of the comment. (Only admins and comment authors can see unmoderated comments.)
+
+<img width="1134" alt="screenshot 2018-12-22 at 21 51 46" src="https://user-images.githubusercontent.com/40343797/50378933-bb2f0e00-0634-11e9-810c-c5ae264faeb8.png">
+The code above shows the moderation checkbox to admin users. This allows admin users to set whether a comment has been moderated for publication.
+
 ## Future features
 
 I had no time to add any visual features to the homepage. I would like to add featured articles which could be chosen by admins. These could be displayed alongside the most recently published articles on the homepage. Other potential features would be the ability to like articles and follow authors. Again, this could determine what articles are featured on the homepage, with articles written by followed authors appearing on the homepage when users are signed-in.
