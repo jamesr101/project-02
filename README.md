@@ -18,6 +18,7 @@
 
 ## My Application - 'Blog...'
 ![blog title logo](https://user-images.githubusercontent.com/40343797/47254377-8bf3f900-d459-11e8-98c5-c504c5c46e4a.png)
+
 A live version of this site can be found on Heroku ----> [Wdi-express-blog.herokuapp.com](https://wdi-express-blog.herokuapp.com/articles)
 ### App overview
 Blog... is a simple blogging platform which offers moderated commenting, admin users, searching and saving of draft articles.
