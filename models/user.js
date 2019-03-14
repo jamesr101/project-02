@@ -18,7 +18,7 @@ userSchema.virtual('articles', {
 
 userSchema.virtual('profileImageSRC')
   .get(function () {
-    return this.profileImage || 'https://startupsclub.com/image/user-default.png';
+    return this.profileImage || '../assets/images/icon-design-users.png';
   });
 
 userSchema.virtual('passwordConfirmation')
